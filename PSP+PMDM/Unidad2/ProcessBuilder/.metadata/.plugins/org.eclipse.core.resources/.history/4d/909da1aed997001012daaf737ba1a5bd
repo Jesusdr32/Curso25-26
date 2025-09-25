@@ -1,0 +1,16 @@
+package paquete;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.util.Scanner;
+
+public class LlamarArgumento {
+
+	public static void main(String[] args) {
+		
+	}
+
+}

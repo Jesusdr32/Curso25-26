@@ -1,0 +1,26 @@
+package paquete;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+public class RecibirArgumento {
+
+	public static void main(String[] args) throws IOException, InterruptedException {
+		Scanner sc = new Scanner(System.in);
+		try {
+			int argumento = Integer.parseInt(sc.nextLine());
+			if (argumento > 0) 
+				System.out.println(-3);
+				System.exit(-3);
+			else if (argumento < 0)
+				System.exit(0);
+			else
+				System.exit(-1);
+		} catch (NumberFormatException e) {
+			System.exit(-2);
+		}
+		
+		sc.close();
+	}
+
+}

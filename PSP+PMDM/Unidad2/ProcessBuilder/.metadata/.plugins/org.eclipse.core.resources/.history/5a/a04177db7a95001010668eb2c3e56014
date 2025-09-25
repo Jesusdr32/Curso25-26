@@ -1,0 +1,13 @@
+package paquete;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+public class RecibirArgumento {
+
+	public static void main(String[] args) throws IOException, InterruptedException {
+		Scanner sc = new Scanner(System.in);
+		int argumento;
+	}
+
+}

@@ -1,0 +1,9 @@
+package paquete;
+
+public class RecibirLineas {
+
+	public static void main(String[] args) {
+		
+	}
+
+}
