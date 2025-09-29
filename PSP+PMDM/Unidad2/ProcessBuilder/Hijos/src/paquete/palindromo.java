@@ -6,6 +6,21 @@ public class palindromo {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		
+		String palabra = sc.nextLine();
+		
+		StringBuilder sb = new StringBuilder(palabra);
+		
+		String palabra2 = sb.reverse().toString();
+		try {
+		if (palabra.toLowerCase().equals(palabra2.toLowerCase()))
+			System.out.println("Es un palíndromo");
+		else
+			System.out.println("No es un palíndromo");
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		sc.close();
 	}
 
 }

@@ -1,0 +1,25 @@
+package paquete;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+public class MediasAsignaturas {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		Scanner sc = new Scanner(System.in);
+		
+		String asignatura = sc.nextLine();
+		
+		String nombreFichero = sc.nextLine();
+		
+		File fichNotas = new File("C:\\Users\\Vespertino\\Desktop\\DA2D1E\\PSP+PMDM\\Unidad2\\ProcessBuilder", nombreFichero);
+		
+		BufferedReader br = new BufferedReader(new FileReader(fichNotas));
+		
+		br.readLine();
+	}
+
+}

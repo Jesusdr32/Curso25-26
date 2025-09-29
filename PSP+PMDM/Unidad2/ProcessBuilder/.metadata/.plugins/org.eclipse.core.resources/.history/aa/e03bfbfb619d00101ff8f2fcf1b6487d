@@ -1,0 +1,9 @@
+package paquete;
+
+public class MediasAsignaturas {
+
+	public static void main(String[] args) {
+		File fichNotas = new File("C:\\Users\\Vespertino\\Desktop\\DA2D1E\\PSP+PMDM\\Unidad2\\ProcessBuilder", nombreFichero);
+	}
+
+}

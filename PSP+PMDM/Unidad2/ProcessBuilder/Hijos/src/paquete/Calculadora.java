@@ -7,13 +7,13 @@ public class Calculadora {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		
-		String argumento;
+		String argumento = "";
 		int acum = 0;
 		
 		try {
 		do {
 			argumento = sc.nextLine();
-//			System.out.println("Escrito " + argumento);
+			System.out.println("Escrito " + argumento);
 			if (!argumento.contains("*")) {
 				acum += Integer.parseInt(argumento);
 			}
@@ -21,6 +21,7 @@ public class Calculadora {
 		System.out.println("Total: " + acum);
 		System.exit(0);
 		} catch (NumberFormatException e) {
+			System.err.println("Error: línea no numérica -> " + argumento);
 			System.exit(-1);
 		}
 		sc.close();

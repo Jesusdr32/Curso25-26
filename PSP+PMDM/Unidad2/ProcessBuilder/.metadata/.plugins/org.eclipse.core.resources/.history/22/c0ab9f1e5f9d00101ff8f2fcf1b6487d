@@ -1,0 +1,15 @@
+package multiprocesoIII;
+
+import java.util.Scanner;
+
+public class Asignaturas_Fichero {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Introduce el nombre de la asignatura: ");
+		
+		String asignatura = sc.nextLine();
+	}
+
+}

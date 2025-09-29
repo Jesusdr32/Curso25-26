@@ -1,0 +1,12 @@
+package multiprocesoIII;
+
+import java.io.File;
+import java.io.IOException;
+
+public class LlamarPalindromo_Fichero {
+
+	public static void main(String[] args) throws IOException, InterruptedException {
+		
+	}
+
+}
