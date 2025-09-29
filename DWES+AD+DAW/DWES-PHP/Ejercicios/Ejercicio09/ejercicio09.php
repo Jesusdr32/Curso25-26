@@ -72,7 +72,7 @@ if (!empty($errores)) {
         echo "<p>No hay ninguna observacion por parte del cliente</p>";
     }
     echo "<p><strong>Método de pago</strong>: " . $metodoPago[$pago] . "</p>";
-    echo "<h2>Datos de la pizza del pedido:</h2>";
+    echo "<h2>Datos de la pizza del pedido:</h2> ";
     echo "<p>La masa de pizza seleccionada es " . $tipoMasas[$masa] . "</p>";
     echo "<p>El tamaño de la pizza seleccionada es " . $tamanios[$size] . "</p>";
     echo "<p>La base de la pizza seleccionada es " . $pizzaBases[$pizza_base] . "</p>";
