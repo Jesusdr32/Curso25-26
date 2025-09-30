@@ -37,7 +37,7 @@ public class Asignaturas_Fichero {
 		
 		bw.write(asignatura);
 		
-//		bw.flush();
+		bw.flush();
 		
 		System.out.println("Introduce el nombre del fichero: ");
 		
@@ -47,15 +47,17 @@ public class Asignaturas_Fichero {
 		
 		bw.flush();
 		
-		} while (asignatura.equals("*") && nombreFichero.equals("*"));
+		} while (!(asignatura.equals("*") && nombreFichero.equals("*")));
 		
-//		while (br.ready()) {
-//			System.out.println(br.readLine());
-//		}
+		while (br.readLine() != null) {
+			System.out.println(br.readLine());
+		}
 		
 		bw.close();
 		
 		br.close();
+		
+		sc.close();
 	}
 
 }

@@ -1,0 +1,48 @@
+package paquete;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class MediasAsignaturas {
+
+	public static void main(String[] args) throws IOException {
+		Scanner sc = new Scanner(System.in);
+		
+		String asignatura = "PSP";
+		
+		String nombreFichero = "notas_psp.txt";
+		
+		//String asignatura = sc.nextLine();
+		
+		//String nombreFichero = sc.nextLine();
+		
+		File fichNotas = new File("C:\\Users\\Vespertino\\Desktop\\DA2D1E\\PSP+PMDM\\Unidad2\\ProcessBuilder\\Notas", nombreFichero);
+		
+		BufferedReader brh = new BufferedReader(new FileReader(fichNotas));
+		double acum = 0;
+		int cont = 0;
+		int personasAprobadas = 0;
+		do {
+			String linea = brh.readLine();
+			if (Double.parseDouble(linea.trim()) >= 5) {
+				personasAprobadas ++;
+			}
+			acum += Double.parseDouble(linea);
+			cont ++;
+		} while (brh.readLine() != null);
+		
+		System.out.println("**************************************************************************");
+		System.out.println("Asignatura: " + asignatura);
+		System.out.println("Número de personas aprobadas: " + personasAprobadas);
+		System.out.println("Nota media de la asignatura: " + acum/cont);
+		System.out.println("**************************************************************************");
+		
+		
+		sc.close();
+		brh.close();
+	}
+
+}

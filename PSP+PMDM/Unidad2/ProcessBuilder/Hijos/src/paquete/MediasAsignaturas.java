@@ -11,6 +11,10 @@ public class MediasAsignaturas {
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
 		
+//		String asignatura = "PSP";
+//		
+//		String nombreFichero = "notas_psp.txt";
+		
 		String asignatura = sc.nextLine();
 		
 		String nombreFichero = sc.nextLine();
@@ -21,21 +25,24 @@ public class MediasAsignaturas {
 		double acum = 0;
 		int cont = 0;
 		int personasAprobadas = 0;
-		while (brh.ready()) {
-			String linea = brh.readLine();
-			if (Double.parseDouble(linea) >= 5) {
+		String linea = brh.readLine();
+		while (linea != null) {
+			if (Double.parseDouble(linea.trim()) >= 5) {
 				personasAprobadas ++;
 			}
 			acum += Double.parseDouble(linea);
 			cont ++;
+			linea = brh.readLine();
 		}
-		
+		String resultado = String.format("%.2f", acum/cont);
 		System.out.println("**************************************************************************");
 		System.out.println("Asignatura: " + asignatura);
 		System.out.println("Número de personas aprobadas: " + personasAprobadas);
-		System.out.println("Nota media de la asignatura: " + acum/cont);
+		System.out.println("Nota media de la asignatura: " + resultado);
 		System.out.println("**************************************************************************");
 		
+		
+		sc.close();
 		brh.close();
 	}
 
