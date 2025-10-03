@@ -79,6 +79,48 @@ function Ejercicio5() {
 function Ejercicio6() {
     let respuesta = "";
     for (let i = 0; i <= 3000; i ++) {
-        
+        if (!(2 ** i > 3000)) {
+            respuesta += " " + 2 ** i + " ";
+        }
+    }
+    let respuesta_potencias = document.getElementById("respuesta_potencias").textContent = respuesta;
+}
+
+function Ejercicio7() {
+    let respuesta = "";
+    let contraseña;
+    contraseña = prompt("introduce la contraseña");
+    if (contraseña !== "DA2D1E"){
+    do {
+        contraseña = prompt("intentelo de nuevo, introduce la contraseña");
+    } while (contraseña !== "DA2D1E")
+    }
+    let respuesta_clave = document.getElementById("respuesta_clave").textContent = "Has acertado";
+}
+
+/**function Ejercicio8() {
+    let respuesta = "";
+    let clave = document.getElementById("clave").textContent.value;
+    let contraseña;
+    contraseña = prompt("introduce la contraseña");
+    if (contraseña !== clave){
+    do {
+        contraseña = prompt("intentelo de nuevo, introduce la contraseña");
+    } while (contraseña !== clave)
     }
 }
+
+function Ejercicio9() {
+    let respuesta = "";
+    let clave = document.getElementById("clave1").textContent.value;
+    let contraseña;
+    contraseña = prompt("introduce la contraseña");
+    if (contraseña !== clave){
+    do {
+        for (i = 0; i <= 3; i ++){
+            contraseña = prompt("intentelo de nuevo, introduce la contraseña");
+        }
+    } while (contraseña !== clave && i != 3)
+    }
+}**/
+

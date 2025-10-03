@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos Predefinidos - Ejercicios propuestos - 1</title>
+</head>
+
+<body>
+    <h1>Ejercicios Propuestos - 1</h1>
+    <h2>1. Escribe un programa que recoge un texto desde un input tipo textarea (multilínea). Además una palabra a
+        buscar y otra para reemplazar.</h2>
+    <div>
+        <p>El programa debe:</p>
+        <ol>
+            <li>Buscar la primera ocurrencia y sustituir</li>
+            <li>Buscar todas las ocurrencias y sustituirlas</li>
+            <li>Lo anterior y contar las ocurrencias sustituidas</li>
+            <li>Preguntar en cada ocurrencia si sustituye</li>
+        </ol>
+    </div>
+    <div>
+        <textarea name="texto" id="texto"></textarea>
+    </div>
+    <div>
+        <label for="ocurrencia">Ocurrencia: </label>
+        <input type="text" name="ocurrencia" id="ocurrencia">
+    </div>
+    <div>
+        <label for="sustitucion">Sustitución: </label>
+        <input type="text" name="sustitucion" id="sustitucion">
+    </div>
+    <div>
+        <button onclick="Ejercicio1reemplazarOcurrencias()">Reemplazar palabras</button>
+        <p id="texto_modificado"></p>
+    </div>
+    <div>
+        <button onclick="Ejercicio1reemplazarPrimeraOcurrencia()">Reemplazar primera ocurrencia</button>
+        <p id="texto_modificado"></p>
+    </div>
+    <div>
+        <button onclick="Ejercicio1contarOcurrenciasSustituidas()">Contar las ocurrencias sustituidas</button>
+        <p id="texto"></p>
+    </div>
+    <script type="text/javascript" src="objetosPredefinidos1.js"></script>
+</body>
+
+</html>

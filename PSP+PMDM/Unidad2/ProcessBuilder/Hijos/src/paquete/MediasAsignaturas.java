@@ -42,8 +42,8 @@ public class MediasAsignaturas {
 		System.out.println("**************************************************************************");
 		
 		
-		sc.close();
-		brh.close();
+//		sc.close();
+//		brh.close();
 	}
 
 }

@@ -35,22 +35,23 @@ public class Asignaturas_Fichero {
 		
 		asignatura = sc.nextLine();
 		
-		bw.write(asignatura);
-		
-		bw.flush();
+		bw.write(asignatura + "\n");
 		
 		System.out.println("Introduce el nombre del fichero: ");
 		
 		nombreFichero = sc.nextLine();
 		
-		bw.write(nombreFichero);
+		bw.write(nombreFichero + "\n");
 		
-		bw.flush();
 		
 		} while (!(asignatura.equals("*") && nombreFichero.equals("*")));
 		
-		while (br.readLine() != null) {
-			System.out.println(br.readLine());
+		bw.flush();
+		
+		String linea;
+		
+		while ((linea = br.readLine()) != null) {
+			System.out.println(linea);
 		}
 		
 		bw.close();

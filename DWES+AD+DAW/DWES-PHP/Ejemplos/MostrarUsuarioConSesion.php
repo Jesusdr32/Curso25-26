@@ -1,0 +1,18 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de acceso a sesiones con sesión</title>
+</head>
+
+<body>
+    <h1>Ejemplo de acceso a sesiones con sesión</h1>
+    <p>Valor de la variable de sesión "usuario": <?= $_SESSION['usuario'] ?></p>
+</body>
+
+</html>
