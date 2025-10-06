@@ -33,17 +33,57 @@
     </div>
     <div>
         <button onclick="Ejercicio1reemplazarOcurrencias()">Reemplazar palabras</button>
-        <p id="texto_modificado"></p>
     </div>
     <div>
         <button onclick="Ejercicio1reemplazarPrimeraOcurrencia()">Reemplazar primera ocurrencia</button>
-        <p id="texto_modificado"></p>
     </div>
     <div>
         <button onclick="Ejercicio1contarOcurrenciasSustituidas()">Contar las ocurrencias sustituidas</button>
-        <p id="texto"></p>
     </div>
-    <script type="text/javascript" src="objetosPredefinidos1.js"></script>
+    <div>
+        <button onclick="Ejercicio1preguntarReemplazo()"></button>
+        <p id="texto_modificado"></p>
+    </div>
+    <h2>3. Escribe un programa que pregunte por un día, mes y año y calcule qué dia de la semana es</h2>
+    <div>
+        <label for="dia">Dia (numérico): </label>
+        <input type="number" name="dia" id="dia">
+    </div>
+    <div>
+        <label for="mes">Mes: </label>
+        <input type="number" name="mes" id="mes">
+    </div>
+    <div>
+        <label for="anio">Año: </label>
+        <input type="number" name="anio" id="anio">
+    </div>
+    <div>
+        <button onclick="Ejercicio3()">¿Qué día de la semana es?</button>
+        <p id="dia_semana"></p>
+    </div>
+    <h2>4. Escribe un programa que recibe una hora (con minutos) en Madrid y calcula las horas de Pekín, Nueva York,
+        Bogotá y Sydney</h2>
+    <div>
+        <label for="hora_madrid">Dime la hora en Madrid (horas y minutos): </label>
+        <input type="text" name="hora_madrid" id="hora_madrid">
+    </div>
+    <div>
+        <button onclick="Ejercicio4()">Calcular las distintas horas</button>
+        <p id="horas"></p>
+    </div>
+    <h2>5. Escribe un programa que recibe un string y responde si es: una cadena, un entero, un número decimal o un
+        entero largo</h2>
+    <div>
+        <label for="cadena">Escribe un dato (lo que sea): </label>
+        <input type="text" name="cadena" id="cadena">
+    </div>
+    <div>
+        <button onclick="Ejercicio5()">El dato es ...</button>
+        <p id="tipo_valor"></p>
+    </div>
+
+    <script type=" text/javascript" src="objetosPredefinidos1.js">
+            </script>
 </body>
 
 </html>
