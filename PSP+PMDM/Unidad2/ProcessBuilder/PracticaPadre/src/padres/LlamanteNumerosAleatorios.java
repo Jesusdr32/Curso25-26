@@ -23,27 +23,26 @@ public class LlamanteNumerosAleatorios {
 		
 		String linea;
 		
+		System.out.println("Valor de Salida programa 1: " + pGenerador.waitFor());
 		System.out.println("Pintando la salida del programa de generacion de impares: ");
 		while ((linea = brGenerador.readLine()) != null) {
 			bwOrdenador.write(linea);
 			System.out.println(linea);
 			bwOrdenador.newLine();
 		}
-		System.out.println("fin la salida del programa de generacion de impares");
+		System.out.println("Fin la salida del programa de generacion de impares");
 		
 		bwOrdenador.flush();
 		bwOrdenador.close();
 		
 		BufferedReader brOrdenador = new BufferedReader(new InputStreamReader(pOrdenador.getInputStream()));
 		
+		System.out.println("Valor de Salida programa 2: " + pOrdenador.waitFor());
 		System.out.println("Salida ordenada del segundo programa: ");
 		while ((linea = brOrdenador.readLine()) != null) {
 			System.out.println(linea);
 		}
 		System.out.println("Fin ordenada del segundo programa");
-		
-		pGenerador.waitFor();
-		pOrdenador.waitFor();
 	}
 
 }

@@ -24,7 +24,7 @@ if ($_FILES['documentacion']['error'] !== UPLOAD_ERR_OK) {
         array_push($errores, "El archivo debe ser un PDF");
     }
 
-    if ($file['size'] > 2 * 1024) {
+    if ($file['size'] > 2 * 1024 * 1024) {
         array_push($errores, "El archivo no puede superar los 2MB");
     }
 }
