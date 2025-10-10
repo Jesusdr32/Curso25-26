@@ -28,7 +28,6 @@ public class Ejercicio5_EL_ARTIFICIERO_Y_LA_BOMBA implements Runnable {
 	
 	public void artificiero() {
 		int desactivacion = (int) (Math.random() * (MAX - MIN + 1)) + MIN;
-		System.out.println(desactivacion);
 		try {
 			System.out.println("El artificiero comienza a desactivar la bomba");
 			Thread.sleep(desactivacion);

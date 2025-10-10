@@ -41,8 +41,42 @@
         <button onclick="Ejercicio1contarOcurrenciasSustituidas()">Contar las ocurrencias sustituidas</button>
     </div>
     <div>
-        <button onclick="Ejercicio1preguntarReemplazo()"></button>
+        <button onclick="Ejercicio1preguntarReemplazo()">¿Quieres reemplazar la palabra?</button>
         <p id="texto_modificado"></p>
+    </div>
+    <h2>2. Utilizando el ejercicio 1, preguntar por una palabra y una opción para cambiar su formato. Al introducir la
+        opción muestra el texto con la palabra en su nuevo formato.</h2>
+    <p>Los formatos disponibles son: <strong>B</strong> negrita, <strong>b</strong> parpadeante, <strong>G</strong>
+        tamaño grande, <strong>M</strong> mayúsculas, <strong>n</strong>
+        minúsculas, <strong>s</strong> pequeña
+    </p>
+    <div>
+        <p>Introduce un texto, una palabra y una opción de formato:</p>
+        <ul>
+            <li>B → negrita</li>
+            <li>b → desplazamiento</li>
+            <li>G → tamaño grande</li>
+            <li>M → mayúsculas</li>
+            <li>n → minúscuñas</li>
+            <li>s → tamaño pequeño</li>
+        </ul>
+    </div>
+    <div>
+        <textarea name="texto2" id="texto2"></textarea>
+    </div>
+    <div>
+        <label for="palabra">Palabra: </label>
+        <input type="text" name="palabra" id="palabra">
+    </div>
+    <div>
+        <label for="opcion">Opción: </label>
+        <input type="text" name="opcion" id="opcion">
+    </div>
+    <div>
+        <button onclick="Ejercicio2()">Aplicar formato</button>
+    </div>
+    <div>
+        <p id="texto_formateado"></p>
     </div>
     <h2>3. Escribe un programa que pregunte por un día, mes y año y calcule qué dia de la semana es</h2>
     <div>
@@ -81,9 +115,53 @@
         <button onclick="Ejercicio5()">El dato es ...</button>
         <p id="tipo_valor"></p>
     </div>
-
-    <script type=" text/javascript" src="objetosPredefinidos1.js">
-            </script>
+    <h2>6. Crea un temporizador que realiza una cuenta atrás (hasta cero) a partir de un número dado por el usuario
+        (disminuye uno por segundo)</h2>
+    <div>
+        <label for="temporizador">Desde qué numero quieres iniciar el temporizador: </label>
+        <input type="number" name="temporizador" id="temporizador">
+    </div>
+    <div>
+        <button onclick="Ejercicio6()">Cuenta atrás</button>
+        <p id="cuenta_atras"></p>
+    </div>
+    <h2>7. Elabora una página que cada medio segundo cambia a un color aleatorio un cuadrado (div) de la página.<br>
+        Incluye un botón que para el cambio de colores.
+    </h2>
+    <div>
+        <button onclick="Ejercicio7()">Comenzar el ejercicio</button>
+        <div id="colores">
+            <p>Este div tiene que cambiar de color</p>
+        </div>
+        <div>
+            <button id="boton_parar">Parar de cambiar los colores</button>
+        </div>
+    </div>
+    <h2>8. Elabora un programa que proporcione cada tres segundos un número para el sorteo de un bingo</h2>
+    <div>
+        <p id="bingo"></p>
+    </div>
+    <div>
+        <button onclick="Ejercicio8()">Iniciar el bingo</button>
+        <button onclick="Ejercicio8('parar')">Parar el bingo</button>
+    </div>
+    <h2>9. Elabora un programa que, a partir de unos nombres asignados por programa, elige uno de ellos</h2>
+    <div>
+        <p id="sorteo"></p>
+    </div>
+    <div>
+        <button onclick="Ejercicio9()">Elegir un nombre</button>
+    </div>
+    <h2>10. Mejora el programa anterior para que se vayan introduciendo nombres por pantalla hasta que se introduzca uno
+        vacío o un número. Al finalizar, elige uno de los nombres introducidos</h2>
+    <p>Nota: utilizar el método push() y la propiedad length de Arrays</p>
+    <div>
+        <p id="sorteoInteractivo"></p>
+    </div>
+    <div>
+        <button onclick="Ejercicio10()">Introducir nombres y elegir uno</button>
+    </div>
+    <script type=" text/javascript" src="objetosPredefinidos1.js"></script>
 </body>
 
 </html>
