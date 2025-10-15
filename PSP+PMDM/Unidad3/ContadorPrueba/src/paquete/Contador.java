@@ -9,8 +9,12 @@ public class Contador {
 		this.contador = 0;
 	}
 	
-	public void suma() {
-			contador ++;
+//	public void suma() {
+//		contador ++;
+//	}
+	
+	public synchronized void suma() {
+		contador ++;
 	}
 
 	public int getContador() {
@@ -21,7 +25,5 @@ public class Contador {
 	public String toString() {
 		return  " " + contador;
 	}
-	
-	
 	
 }
