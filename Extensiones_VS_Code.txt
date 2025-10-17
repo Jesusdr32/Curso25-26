@@ -1,0 +1,11 @@
+Bracket Pair Colorization
+Edit CSV
+Live Preview
+Live Server
+Lorem ipsum
+Material Icon Theme
+Open In Default Browser
+Path Intellisense
+PHP Intelephense
+Prettier - Code formatter
+Rainbow CSV
