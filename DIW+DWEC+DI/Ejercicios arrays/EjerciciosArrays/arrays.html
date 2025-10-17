@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Arrays</title>
+</head>
+
+<body>
+    <h1>Resuelve los ejercicios siguientes utilizando métodos del objeto Array, de forma que muestren los resultados por
+        consola. No es
+        necesario que escriban los resultados en el documento.
+    </h1>
+    <h3>1. Dado el array [15, 3, 7, 22, 10], ordénalo de manera ascendente utilizando el método sort</h3>
+    <div>
+        <button onclick="Ejercicio1()">Mostrar el array ordenado</button>
+        <p id="arrayOrdenadoNum"></p>
+    </div>
+    <h3>2. Del array ['casa', 'árbol', 'sol', 'perro', 'gato'], filtra las palabras que tienen más de cuatro letras
+    </h3>
+    <div>
+        <button onclick="Ejercicio2()">Mostrar el array filtrado por letras</button>
+        <p id="arrayFiltradoLetras"></p>
+    </div>
+    <h3>3. Dado el array [25.99, 10.5, 5.99, 100, 1.5], utilizando el método map para crear un nuevo array donde cada
+        precio se duplique</h3>
+    <div>
+        <button onclick="Ejercicio3()">Mostrar el array mapeado precio duplicado</button>
+        <p id="arrayMapeadoDuplicado"></p>
+    </div>
+    <h3>4. Del array [1, 7, 15, 22, 5, 10], filtra los números que son pares</h3>
+    <div>
+        <button onclick="Ejercicio4()">Mostrar el array filtrado por pares</button>
+        <p id="arrayFiltradoPares"></p>
+    </div>
+    <h3>5. Ordena alfabéticamente el array ['perro', 'gato', 'elefante', 'jirafa'] utilizando el método sort</h3>
+    <div>
+        <button onclick="Ejercicio5()">Mostrar el array ordenado alfabéticamente</button>
+        <p id="arrayOrdenadoLetras"></p>
+    </div>
+    <h3>6. Dado el array de fechas ['2023-05-10', '2022-12-01', '2024-02-20'], utiliza el método map para crear un nuevo
+        array con objetos Date correspondientes a cada fecha</h3>
+    <div>
+        <button onclick="Ejercicio6()">Mostrar el array mapeado con objetos Date</button>
+        <p id="arrayMapeadoDate"></p>
+    </div>
+    <h3>7. Del array [8, 15, 4, 20, 10], filtra los números que son mayores que 10</h3>
+    <div>
+        <button onclick="Ejercicio7()">Mostrar el array filtrado mayores de 10</button>
+        <p id="arrayFiltradoMayor"></p>
+    </div>
+    <h3>8. Dado el array de objetos [{nombre: 'Juan', edad: 25}, {nombre: 'Ana', edad: 30}, {nombre: 'Pedro', edad:
+        20}], ordénalos de menor a mayor según su edad.</h3>
+    <div>
+        <button onclick="Ejercicio8()">Mostrar el array ordenado por edad</button>
+        <p id="arrayOrdenadoEdad"></p>
+    </div>
+    <h3>9. Dado el array ['hola', 'adiós', 'buenos días'], utiliza el método map para crear un nuevo array donde cada
+        palabra esté en mayúsculas</h3>
+    <div>
+        <button onclick="Ejercicio9()">Mostrar el array mapeado a mayúsculas</button>
+        <p id="arrayMapeadoMayus"></p>
+    </div>
+    <h3>10. Del array de objetos que representa libros, filtra aquellos cuyo año de publicación sea posterior a 2000
+    </h3>
+    <div>
+        <button onclick="Ejercicio10()">Mostrar el array filtrado por año de publicación</button>
+        <p id="arrayFiltradoLibros"></p>
+    </div>
+</body>
+<script src="arrays.js"></script>
+
+</html>

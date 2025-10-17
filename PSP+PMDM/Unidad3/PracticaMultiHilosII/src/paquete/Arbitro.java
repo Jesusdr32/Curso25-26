@@ -15,35 +15,18 @@ public class Arbitro {
 		this.finJuego = false;
 	}
 
-	public int getTurno() {
+	public synchronized int getTurno() {
 		return turno;
 	}
 	
 	public boolean isFinJuego() {
 		return finJuego;
 	}
-	
-	public void setFinJuego(boolean finJuego) {
-		this.finJuego = finJuego;
-	}
 
-	public synchronized String jugada(int idJugador, int intento) {
-		if (finJuego) {
-			return "El juego ya ha finalizado";
-		}
-		
-		if (idJugador != turno) {
-			return "No es tu turno, jugador " + idJugador;
-		}
-		
-		String resultado;
-		
+	public synchronized void jugada(int idJugador, int intento) {
 		if (intento == numAdivinar) {
 			finJuego = true;
-			resultado = idJugador + "  gana, adivinó el número";
-		}
-		else {
-			resultado = "Incorrecto jugador " + idJugador;
+			System.out.println("Jugador" + idJugador + "  gana, adivinó el número");
 		}
 		
 		if (!finJuego) {
@@ -52,10 +35,8 @@ public class Arbitro {
 				turno = 1;
 			}
 			
-			resultado += "\nTurno siguiente: jugador " + turno;
+			System.out.println("Turno siguiente: Jugador" + turno);
 		}
-		
-		return resultado;
 	}
 	
 	public int getNumAdivinar() {
