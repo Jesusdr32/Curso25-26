@@ -51,7 +51,7 @@ function Ejercicio7() {
 function Ejercicio8() {
     let objetos = [{nombre: 'Juan', edad: 25}, {nombre: 'Ana', edad: 30}, {nombre: 'Pedro', edad: 20}];
     let objetosOrden = objetos.sort((a, b) => a.edad - b.edad);
-        document.getElementById("arrayOrdenadoEdad").textContent = objetosOrden.map(objeto => `${objeto.nombre} tiene ${objeto.edad} años`).join('\n');
+    document.getElementById("arrayOrdenadoEdad").textContent = objetosOrden.map(objeto => `${objeto.nombre} tiene ${objeto.edad} años`).join('\n');
 }
 
 function Ejercicio9() {
