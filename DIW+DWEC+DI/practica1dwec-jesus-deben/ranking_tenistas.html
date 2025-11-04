@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Práctica Ranking Tenistas</title>
+  <style>
+    div {
+      border: 1px black solid;
+      min-height: 10px;
+      min-width: 200px;
+      width: fit-content;
+    }
+  </style>
+  <script src="ranking_tenistas.js"></script>
+</head>
+
+<body>
+  <h3>Consideraciones previas</h3>
+  <p>No es necesario hacer los ejercicios por orden</p>
+  <p>
+    Referencia los archivos javascript (datos y el de tus ejercicios en este
+    archivo html
+  </p>
+  <p>No hay campos con valores nulos</p>
+  <p>Tienes que activar la acción de cada botón</p>
+  <hr />
+  <h2>
+    1. Escribir los 20 primeros tenistas con todos sus campos (separados por
+    comas)
+  </h2>
+  <p>
+    Escribe sólo los primeros 20 tenistas (desordenados tal como vienen) en el
+    div <strong>primeros20</strong>
+  </p>
+  <button type="button" onclick="Ejercicio1()">20 primeros</button>
+  <div id="primeros20" style="white-space: pre-line;"></div>
+  <hr />
+  <h2>2. Escribir 10 tenistas poco a poco</h2>
+  <p>
+    Igual que el ejercicio 1, sólo que los datos de los tenistas aparecen uno
+    cada segundo, en el div <strong>apoquito10</strong>
+  </p>
+  <button type="button" onclick="Ejercicio2()">10 poco a poco</button>
+  <div id="apoquito10" style="white-space: pre-line;"></div>
+  <hr />
+  <h2>3. El mejor tenista</h2>
+  <p>
+    Escribe los datos del tenista con más puntos de la lista, en el div
+    <strong>elmejor</strong>
+  </p>
+  <button type="button" onclick="Ejercicio3()">El mejor</button>
+  <div id="elmejor"></div>
+  <hr />
+  <h2>4. Los que tienen un número de victorias</h2>
+  <p>
+    Escribe los datos de los tenistas que tienen el número de victorias que
+    introduzcas, en el div <strong>numvictorias</strong>
+  </p>
+  <input type="number" id="nvictory" />
+  <button type="button" onclick="Ejercicio4()">Por número de victorias</button>
+  <div id="numvictorias" style="white-space: pre-line;"></div>
+  <hr />
+  <h2>5. La media de partidos jugados</h2>
+  <p>
+    Escribe la media de partidos que han jugado todos los tenistas de la
+    lista, en el div <strong>media</strong>
+  </p>
+  <button type="button" onclick="Ejercicio5()">Media de partidos</button>
+  <div id="media"></div>
+  <hr />
+  <h2>6. Los que tienen juegan regularmente</h2>
+  <p>
+    Escribe los datos de los tenistas que tienen diez partidos más o menos que
+    la media, en el div <strong>regulares</strong>
+  </p>
+  <button type="button" onclick="Ejercicio6()">Los más regulares</button>
+  <div id="regulares" style="white-space: pre-line;"></div>
+  <hr />
+  <h2>7. Dale un usuario a los tenistas</h2>
+  <p>
+    Para cada usuario, genera un usuario formado por su identificador, la
+    inicial de su nombre y las dos primeras letras de su apellido. Escribe los
+    primeros 20 usuarios separados por comas en el div
+    <strong>usuarios</strong>
+  </p>
+  <button type="button" onclick="Ejercicio7()">Generar usuarios</button>
+  <div id="usuarios"></div>
+  <hr />
+  <h2>8. Tu propio ejercicio</h2>
+  <p>
+    Escribe aquí un ejercicio que se te ocurra con estos datos, y el resultado
+    va en el div <strong>miejercicio</strong>
+  </p>
+  <button type="button" onclick="Ejercicio8()">Mi ejercicio</button>
+  <div id="miejercicio"></div>
+</body>
+<script src="ejercicios_tenistas.js"></script>
+
+</html>
