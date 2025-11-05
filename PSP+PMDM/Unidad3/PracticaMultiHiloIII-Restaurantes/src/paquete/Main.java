@@ -2,6 +2,7 @@ package paquete;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -13,7 +14,7 @@ public class Main {
 		
 		Repartidor[] repartidores = new Repartidor[4];
 		for (int i = 0; i < 4; i ++) {
-			repartidores[i] = new Repartidor(restaurante);
+			repartidores[i] = new Repartidor(i + 1 + "", restaurante);
 		}
 		
 		ExecutorService executor = Executors.newFixedThreadPool(6);
@@ -25,6 +26,8 @@ public class Main {
 		}
 		
 		executor.shutdown();
+		
+		executor.awaitTermination(10, TimeUnit.SECONDS);
 		
 		System.out.println("\n=== RESULTADO FINAL ===");
         for (int i = 0; i < repartidores.length; i++) {

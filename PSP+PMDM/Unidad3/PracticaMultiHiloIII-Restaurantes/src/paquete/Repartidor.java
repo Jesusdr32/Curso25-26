@@ -4,11 +4,13 @@ import java.util.Random;
 
 public class Repartidor implements Runnable {
 	private Restaurante restaurante;
+	private String nombre;
 	private int hamburguesasEntregadas = 0;
 	private int pizzasEntregadas = 0;
 	private final Random random = new Random();
 	
-	public Repartidor(Restaurante restaurante) {
+	public Repartidor(String nombre, Restaurante restaurante) {
+		this.nombre = nombre;
 		this.restaurante = restaurante;
 	}
 	
@@ -16,7 +18,7 @@ public class Repartidor implements Runnable {
 	public void run() {
 		try {
 			while (true) {
-				String producto = restaurante.tomar();
+				String producto = restaurante.tomar(this);
 				if (producto == null) {
 					break;
 				}
@@ -26,7 +28,7 @@ public class Repartidor implements Runnable {
 				if (producto.equals("hamburguesa")) hamburguesasEntregadas ++;
 				else pizzasEntregadas ++;
 				
-				System.out.println("Repartidor entrega " + producto + "(hamburguesas = " + hamburguesasEntregadas + ", pizzas = " + pizzasEntregadas);
+				System.out.println("Repartidor " + nombre + " entrega " + producto + "(hamburguesas = " + hamburguesasEntregadas + ", pizzas = " + pizzasEntregadas + ")");
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -39,6 +41,10 @@ public class Repartidor implements Runnable {
 
 	public int getPizzasEntregadas() {
 		return pizzasEntregadas;
+	}
+
+	public String getNombre() {
+		return nombre;
 	}
 	
 }

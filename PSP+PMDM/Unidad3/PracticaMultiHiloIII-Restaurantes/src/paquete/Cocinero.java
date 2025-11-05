@@ -24,7 +24,7 @@ public class Cocinero implements Runnable {
 				}
 				int tiempo = random.nextInt(maxTiempo + 1);	
 				Thread.sleep(tiempo);
-				restaurante.poner(this.especializacion);
+ 				restaurante.poner(this.especializacion);
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Restaurante {
-	private List<String> armario = new ArrayList<>();
+	private ArrayList<String> armario = new ArrayList<>();
 	private final int CAPACIDAD = 5;
 	private int cocinerosTerminados = 0;
 	private final int TOTAL_COCINEROS = 2;
@@ -14,11 +14,30 @@ public class Restaurante {
 			wait();
 		}
 		armario.add(tipo);
-		System.out.println("Cocinero pone " + tipo + " (armario = " + armario.size() + ")");
+		System.out.println("\nCocinero pone " + tipo + " (" + mostrarArmario() + ")\n");
 		notifyAll();
 	}
 	
-	public synchronized String tomar() throws InterruptedException {
+	public String mostrarArmario() {
+		String horno = "";
+		int i = 0;
+		for (String producto : armario) {
+			switch (producto) {
+			case "hamburguesa" -> horno += " Hamburguesa ";
+			case "pizza" -> horno += " Pizza ";
+			default -> horno += " Vacío ";
+			}
+			i ++;
+		}
+		
+		while (i < CAPACIDAD) {
+			horno += " Vacío";
+			i ++;
+		}
+		return horno;
+	}
+	
+	public synchronized String tomar(Repartidor repartidor) throws InterruptedException {
 		while (armario.isEmpty()) {
 			if (cocinerosTerminados == TOTAL_COCINEROS) {
 				return null;
@@ -38,7 +57,7 @@ public class Restaurante {
 		}
 		
 		armario.remove(producto);
-		System.out.println("Repartidor recoge " + producto + " (armario = " + armario.size() + ")");
+		System.out.println("Repartidor " + repartidor.getNombre() + " recoge " + producto + " (" + mostrarArmario() + ")");
 		notifyAll();
 		return producto;
 	}

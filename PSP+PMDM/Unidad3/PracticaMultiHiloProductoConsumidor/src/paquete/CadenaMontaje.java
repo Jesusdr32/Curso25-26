@@ -34,7 +34,7 @@ public class CadenaMontaje {
 				colocados ++;
 				System.out.println("Producto tipo " + tipo);
 				System.out.println("Coloco un producto " + tipo + " en la posición " + i);
-				System.out.println(estadoCinta());
+				System.out.println(/*estadoCinta()*/);
 				break;
 			}
 		}
@@ -62,7 +62,7 @@ public class CadenaMontaje {
 				cinta[i] = 0;
 				empaquetados[tipo] ++;
 				System.out.println("Recogiendo producto " + tipo + " (posición " + i + ")");
-				System.out.println(estadoCinta());
+				System.out.println(/*estadoCinta()*/);
 				notifyAll();
 				return true;
 			}
@@ -95,11 +95,11 @@ public class CadenaMontaje {
 		return new int[] {empaquetados[1], empaquetados[2], empaquetados[3]};
 	}
 	
-	public synchronized String estadoCinta() {
-		StringBuilder sb = new StringBuilder("[");
-		for (int i = 0; i < cinta.length; i ++) {
-			if (i > 0) sb.append(", ");
-			sb.append(cinta[i] == 0 ? "e" : cinta[i]);
-		}
-	}
+//	public synchronized String estadoCinta() {
+//		StringBuilder sb = new StringBuilder("[");
+//		for (int i = 0; i < cinta.length; i ++) {
+//			if (i > 0) sb.append(", ");
+//			sb.append(cinta[i] == 0 ? "e" : cinta[i]);
+//		}
+//	}
 }
