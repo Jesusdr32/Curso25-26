@@ -1,50 +1,28 @@
 package paquete;
 
+import java.util.concurrent.Semaphore;
+
 public class Isla {
-	private final int capacidadPlaya;
-	private int balsasEnPlaya = 0;
-	private boolean balsa1Esperando = false;
 	private int naufragosRestantes;
+	private final Semaphore playa;
 	
-	public Isla(int capacidadPlaya, int naufragosTotales) {
-		this.capacidadPlaya = capacidadPlaya;
-		this.naufragosRestantes = naufragosTotales;
+	public Isla(int totalNaufragos) {
+		this.naufragosRestantes = totalNaufragos;
+		this.playa = new Semaphore(2, true);
 	}
 	
-	//Entrada a la playa, con prioridad para la balsa 1
-	public synchronized void entrarPlaya(int idBalsa) throws InterruptedException {
-		if (idBalsa == 1) {
-			balsa1Esperando = true;
-			while (balsasEnPlaya >= capacidadPlaya) {
-				wait();
-			}
-			balsa1Esperando = false;
-			balsasEnPlaya ++;
-		} else {
-			while (balsasEnPlaya >= capacidadPlaya || balsa1Esperando) {
-				wait();
-			}
-			balsasEnPlaya ++;
-		}
+	public synchronized int rescatarNaufragos(int cantidad) {
+		if (naufragosRestantes <= 0) return 0;
+		int rescate = Math.min(cantidad, naufragosRestantes);
+		naufragosRestantes -= rescate;
+		return rescate;
 	}
 	
-	//Salida de la playa
-	public synchronized void salirPlaya(int idBalsa) {
-		balsasEnPlaya = Math.max(0, balsasEnPlaya - 1);
-		notifyAll();
-	}
-	
-	//Asignar de forma segura los náufragos que se suben a esta balsa
-	public synchronized int asignarNaufragos(int maximo) {
-		int tomar = Math.min(maximo, naufragosRestantes);
-		if (tomar > 0) {
-			naufragosRestantes -= tomar;
-		}
-		return tomar;
-	}
-	
-	//Consultar los náufragos que quedan 
 	public synchronized int getNaufragosRestantes() {
 		return naufragosRestantes;
+	}
+	
+	public Semaphore getPlaya() {
+		return playa;
 	}
 }

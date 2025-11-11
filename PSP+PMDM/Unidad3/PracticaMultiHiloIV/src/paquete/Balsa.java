@@ -1,57 +1,68 @@
 package paquete;
 
-import java.util.concurrent.Callable;
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
-public class Balsa implements Callable<Integer> {
+public class Balsa implements Runnable {
     private final int id;
     private final Isla isla;
-    private final int capacidad = 15;
     private int rescatados = 0;
-
+    private static final int CAPACIDAD = 15;
+    
     public Balsa(int id, Isla isla) {
-        this.id = id;
-        this.isla = isla;
+    	this.id = id;
+    	this.isla = isla;
     }
-
+    
     @Override
-    public Integer call() {
-        try {
-            while (true) {
-                synchronized (isla) {
-                    if (isla.getNaufragosRestantes() <= 0) break;
-                }
-
-                // Esperar turno para entrar a la playa
-                isla.entrarPlaya(id);
-
-                // Comprobar si quedan al entrar
-                if (isla.getNaufragosRestantes() <= 0) {
-                    isla.salirPlaya(id);
-                    break;
-                }
-
-                // Cargar náufragos
-                int aCargar = isla.asignarNaufragos(capacidad);
-                if (aCargar == 0) {
-                    isla.salirPlaya(id);
-                    break;
-                }
-
-                long tiempoCarga = ThreadLocalRandom.current().nextLong(2000, 3000 + 1);
-                Thread.sleep(tiempoCarga);
-
-                isla.salirPlaya(id);
-
-                // Viaje ida y vuelta
-                long tiempoViaje = ThreadLocalRandom.current().nextLong(1800, 2000 + 1);
-                Thread.sleep(tiempoViaje);
-
-                rescatados += aCargar;
-            }
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-        return rescatados;
+    public void run() {
+    	Thread.currentThread().setName("Balsa-" + id);
+    	
+    	if (id == 1) {
+    		Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
+    	} else {
+    		Thread.currentThread().setPriority(Thread.NORM_PRIORITY);
+    	}
+    	
+    	Semaphore playa = isla.getPlaya();
+    	
+    	while (true) {
+    		try {
+    			if (id == 1) {
+    				playa.acquire();
+    			} else {
+    				if (!playa.tryAcquire(300, TimeUnit.MILLISECONDS)) {
+    					Thread.yield();
+    					continue;
+    				}
+    			}
+    			
+    			if (isla.getNaufragosRestantes() <= 0) {
+    				playa.release();
+    				break;
+    			}
+    			
+    			int rescate = isla.rescatarNaufragos(CAPACIDAD);
+    			if (rescate == 0) {
+    				playa.release();
+    				break;
+    			}
+    			
+    			rescatados += rescate;
+    			
+    			System.out.printf("Balsa %d rescata %d náufragos. Quedan: %d %n", id, rescate, isla.getNaufragosRestantes());
+    			
+    			Thread.sleep(ThreadLocalRandom.current().nextInt(2000, 3001));
+    			
+    			Thread.sleep(ThreadLocalRandom.current().nextInt(1800, 2001));
+    			
+    			playa.release();
+    		} catch (InterruptedException e) {
+    			e.printStackTrace();
+    		}
+    	}
+    	
+    	System.out.printf("Balsa %d ha rescatado un total de %d náufragos. %n", id, rescatados);
     }
 }
