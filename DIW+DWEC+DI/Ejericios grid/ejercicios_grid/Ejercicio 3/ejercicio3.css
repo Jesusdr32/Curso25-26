@@ -1,0 +1,13 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(6rem, 6rem));
+    gap: 1rem;
+}
+
+.grid .g2 {
+    grid-template-columns: repeat(7, minmax(6rem, 1fr));
+}
+
+.item {
+    
+}

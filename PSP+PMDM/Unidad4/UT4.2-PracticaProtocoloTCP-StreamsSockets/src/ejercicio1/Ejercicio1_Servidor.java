@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Ejercicio1_Server {
+public class Ejercicio1_Servidor {
 
 	public static void main(String[] args) throws IOException {
 		//Asigno un puerto a mi aplicación e instancio un serversocket con el puerto

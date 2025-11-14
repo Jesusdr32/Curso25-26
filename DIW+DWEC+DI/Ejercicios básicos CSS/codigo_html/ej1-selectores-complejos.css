@@ -1,0 +1,33 @@
+td[colspan="4"],
+td[rowspan="4"] {
+    background-color: brown;
+}
+
+td[colspan="3"],
+td[rowspan="3"] {
+    background-color: yellow;
+}
+
+td[colspan="2"],
+td[rowspan="2"] {
+    background-color: green;
+}
+
+li[id*="pregunta"] {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: blue;
+}
+
+li .negrita {
+    font-weight: bold;
+}
+
+li[id*="pregunta"] .negrita {
+    background-color: yellow;
+}
+
+.comentarios {
+    font: italic;
+    border: dotted orangered;
+}
+

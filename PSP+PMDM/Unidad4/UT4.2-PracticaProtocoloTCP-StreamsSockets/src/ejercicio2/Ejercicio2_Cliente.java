@@ -23,6 +23,27 @@ public class Ejercicio2_Cliente {
 		DataInputStream flujoEntrada = new DataInputStream(cliente.getInputStream());
 		
 		System.out.println("Dame un número entre el 0 y el 100");
+		flujoSalida.writeInt(Integer.parseInt(sc.nextLine()));
+		int vueltas = 1;
+		boolean acierto = false;
+		
+		do {
+			System.out.println("Recibiendo del SERVIDOR: \n\t" + flujoEntrada.readUTF());
+			acierto = flujoEntrada.readBoolean();
+			flujoSalida.writeInt(Integer.parseInt(sc.nextLine()));
+			vueltas ++;
+		} while (!acierto && vueltas < 5);
+		if (acierto)
+			System.out.println("Has ganado");
+		else
+			System.out.println("Se acabaron los intentos");
+		
+		//Cerrar streams y sockets
+		flujoEntrada.close();
+		flujoSalida.close();
+		cliente.close();
+		sc.close();
+		
 	}
 
 }
