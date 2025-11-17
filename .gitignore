@@ -4,3 +4,16 @@ Curso2024-2025/
 #Ignorar logs y archivos temporales
 *.log
 *.tmp
+*.bak
+*.swp
+*.hprof
+
+#Ignorar salida de compilación
+bin/
+target/
+out/
+
+#Ignorar archivos .jar y .war generados
+*.jar
+*.war
+*.ear
