@@ -1,5 +1,0 @@
-INDEX VERSION 1.134+C:\Users\jesus\Desktop\REPOSITORIO LOCAL\Curso25-26\PSP+PMDM\Unidad2\ProcessBuilder\.metadata\.plugins\org.eclipse.jdt.core
-3987598385.index
-2041572570.index
-3815926201.index
-1865797976.index
