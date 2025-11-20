@@ -22,3 +22,11 @@
 	background-color: #ccc;
 	color: #444;
 }
+
+.a {
+	grid-column: 1/2;
+}
+
+.b {
+	grid-column: ;
+}
