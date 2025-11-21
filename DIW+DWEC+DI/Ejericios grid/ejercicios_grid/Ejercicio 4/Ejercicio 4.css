@@ -7,6 +7,10 @@ body{
 	height: 100vh;
 	grid-template-columns: repeat(12, 1fr);
 	grid-template-rows: 20vh 1fr 20vh;
+	grid-template-areas: 
+	". . header header header header header header header header . ."
+	"aside aside aside aside . main main main main main main main"
+	". . . . footer footer footer footer . . . .";
 	grid-gap: 5px;
 }
 
@@ -17,18 +21,18 @@ body{
 	align-items: center;
 }
 
-.container > header {
-	
+.item--header {
+	grid-area: header;
 }
 
-.container > main {
-	
+.item--main {
+	grid-area: main;
 }
 
-.container > aside {
-	
+.item--aside {
+	grid-area: aside;
 }
 
-.container > footer {
-	
+.item--footer {
+	grid-area: footer;
 }

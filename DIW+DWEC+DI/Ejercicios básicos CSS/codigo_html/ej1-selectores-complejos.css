@@ -15,7 +15,7 @@ td[rowspan="2"] {
 
 li[id*="pregunta"] {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    color: blue;
+    color: purple;
 }
 
 li .negrita {
@@ -29,5 +29,13 @@ li[id*="pregunta"] .negrita {
 .comentarios {
     font: italic;
     border: dotted orangered;
+}
+
+p + p {
+    text-decoration: underline;
+}
+
+li > a {
+    background-color: aqua;
 }
 

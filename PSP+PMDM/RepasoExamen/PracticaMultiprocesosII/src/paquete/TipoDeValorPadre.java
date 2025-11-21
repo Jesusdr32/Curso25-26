@@ -1,0 +1,54 @@
+package paquete;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.Scanner;
+
+public class TipoDeValorPadre {
+
+	public static void main(String[] args) throws IOException, InterruptedException {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Escribe un número entero positivo: ");
+		
+		String argumento = sc.nextLine();
+		
+		File directorio = new File("C:\\Users\\jesus\\Desktop\\REPOSTORIOS LOCALES\\Curso25-26\\PSP+PMDM\\RepasoExamen\\PracticaMultiprocesosII\\bin");
+		
+		ProcessBuilder pb = new ProcessBuilder("java", "paquete.TipoDeValorHijo");
+		
+		pb.directory(directorio);
+		
+		Process p = pb.start();
+		
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(p.getOutputStream()));
+		
+		argumento += "\n";
+		
+		bw.write(argumento);
+		
+		bw.flush();
+		
+		int valorSalida = 99;
+		
+		try {
+			valorSalida = p.waitFor();
+			
+			if (valorSalida == -1)
+				System.out.println("El argumento es '0'");
+			else if (valorSalida == -2)
+				System.out.println("No has escrito un entero");
+			else if (valorSalida == 0)
+				System.out.println("El argumento debe ser positivo");
+			else
+				System.out.println("Enorabuena, el argumento es un número positivo");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		bw.close();
+		sc.close();
+	}
+
+}
