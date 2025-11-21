@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vuelos...Practica 21 noviembre 2025</title>
+  <link type="text/css" rel="stylesheet" href="vuelos.css" />
+</head>
+
+<body>
+  <div id="controles">
+    <table>
+      <tr>
+        <td>Busca tu vuelo:</td>
+        <td colspan="3">
+          <input type="text" placeholder="AB123" id="nvuelo" />
+        </td>
+        <td class="lasttd"></td>
+      </tr>
+      <tr>
+        <td colspan="5"></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td colspan="2">
+          <div id="btnall" class="boton">Mostrar los 20 primeros</div>
+        </td>
+        <td class="lasttd"></td>
+      </tr>
+      <tr>
+        <td colspan="5"></td>
+      </tr>
+      <tr>
+        <td>Selecciona el origen de tu vuelo</td>
+        <td colspan="2">
+          <select id="origen" class="cities">
+            <option value="">Desde dónde sales</option>
+            <option value="P">Paris</option>
+            <option value="M">Madrid</option>
+            <option value="L">Lisbon</option>
+            <option value="R">Rome</option>
+          </select>
+        </td>
+        <td class="lasttd"></td>
+      </tr>
+      <tr>
+        <td>Selecciona el destino de tu vuelo</td>
+        <td colspan="2">
+          <select id="destino" class="cities">
+            <option value="">A dónde vas</option>
+            <option value="A">Athens</option>
+            <option value="D">Dublin</option>
+            <option value="B">Berlin</option>
+            <option value="R">Rome</option>
+          </select>
+        </td>
+        <td class="lasttd"></td>
+      </tr>
+
+      <tr>
+        <td colspan="5"></td>
+      </tr>
+
+      <tr>
+        <td></td>
+        <td colspan="2">
+          <div id="btnorden" class="boton">
+            Ordenar por precio descendente
+          </div>
+        </td>
+        <td class="lasttd"></td>
+      </tr>
+    </table>
+  </div>
+  <div id="canvas">
+    <div id="cabecera">
+      <table>
+        <th>
+        <td class="celda">Vuelo</td>
+        <td class="celda">Origen</td>
+        <td class="celda">Destino</td>
+        <td class="celda">Compañía</td>
+        <td class="celda">Precio</td>
+        </th>
+      </table>
+    </div>
+    <div id="showtable"></div>
+    <div id="flight"></div>
+  </div>
+</body>
+<script src="vuelosdata.js"></script>
+<script src="jdrvuelos.js"></script>
+
+</html>
