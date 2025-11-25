@@ -1,23 +1,24 @@
-package ejercicio1;
+package ejercicio2;
 
 import java.io.Serializable;
-import java.util.HashMap;
 
 public class Jugada implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String jugador; //Nombre del jugador que envía la jugada
+	private String jugador; //Nombre del jugador (cliente)
 	private int opcion; // 1. piedra / 2. papel / 3. tijera
 	//Campos para enviar resultados desde el servidor
-	private String ganador; //Nombre del ganador de la ronda (null si es empate)
 	private String mensaje; //Mensaje explicativo ("GANA X!", "EMPATE!")
-	private HashMap<String, Integer> marcador; //Marcador actualizado
+	private int puntajeJugador; //Puntos del cliente
+	private int puntajeServidor; //Puntos del servidor
 	
 	public Jugada(String jugador, int opcion) {
 		super();
 		this.jugador = jugador;
 		this.opcion = opcion;
+		this.puntajeJugador = 0;
+		this.puntajeServidor = 0;
 	}
 
 	public String getJugador() {
@@ -28,14 +29,6 @@ public class Jugada implements Serializable {
 		return opcion;
 	}
 	
-	public String getGanador() {
-		return ganador;
-	}
-	
-	public void setGanador(String ganador) {
-		this.ganador = ganador;
-	}
-
 	public String getMensaje() {
 		return mensaje; 
 	}
@@ -44,12 +37,20 @@ public class Jugada implements Serializable {
 		this.mensaje = mensaje;
 	}
 	
-	public HashMap<String, Integer> getMarcador() {
-		return marcador;
+	public int getPuntajeJugador() {
+		return puntajeJugador;
 	}
 	
-	public void setMarcador(HashMap<String, Integer> marcador) {
-		this.marcador = marcador;
+	public void setPuntajeJugador(int puntajeJugador) {
+		this.puntajeJugador = puntajeJugador;
+	}
+	
+	public int getPuntajeServidor() {
+		return puntajeServidor;
+	}
+	
+	public void setPuntajeServidor(int puntajeServidor) {
+		this.puntajeServidor = puntajeServidor;
 	}
 
 }
