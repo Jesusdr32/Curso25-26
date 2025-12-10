@@ -25,6 +25,7 @@ public class HiloJugada extends Thread {
 				
 				int puntajeJugador = 0;
 				int puntajeServidor = 0;
+				
 				Random random = new Random();
 				int[] opciones = {1, 2, 3};
 				
@@ -37,6 +38,7 @@ public class HiloJugada extends Thread {
 					
 					//Determinar ganador
 					String mensaje;
+					
 					if (jugadaCliente.getOpcion() == opcionServidor) 
 						mensaje = "EMPATE! Servidor también eligió " + opcionServidor;
 					else if (((jugadaCliente.getOpcion() == 1) && (opcionServidor == 3)) || ((jugadaCliente.getOpcion() == 2) && (opcionServidor == 1)) || ((jugadaCliente.getOpcion() == 3) && (opcionServidor == 2))) {
@@ -55,6 +57,9 @@ public class HiloJugada extends Thread {
 				}
 				
 				oos.writeObject("Juego terminado. Ganador: " + (puntajeJugador == 3 ? nombre : "Servidor")); 
+				
+				System.out.println("Partida del jugador " + nombre + " finalizada");
+				cliente.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

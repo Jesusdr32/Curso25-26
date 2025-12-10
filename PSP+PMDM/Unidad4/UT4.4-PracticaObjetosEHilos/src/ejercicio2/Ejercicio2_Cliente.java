@@ -22,6 +22,7 @@ public class Ejercicio2_Cliente {
 			
 			while (true) {
 				System.out.println((String) ois.readObject()); //Pedir jugada
+				
 				int opcion = Integer.parseInt(sc.nextLine());
 				oos.writeObject(new Jugada(nombre, opcion));
 				
@@ -32,6 +33,7 @@ public class Ejercicio2_Cliente {
 				}
 				
 				Jugada res = (Jugada) obj;
+				
 				System.out.println(res.getMensaje());
 				System.out.println("Marcador: " + nombre + " " + res.getPuntajeJugador() + " - Servidor " + res.getPuntajeServidor());
 				

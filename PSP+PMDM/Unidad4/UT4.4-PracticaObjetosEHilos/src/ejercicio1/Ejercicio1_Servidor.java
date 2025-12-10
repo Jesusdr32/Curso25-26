@@ -11,6 +11,7 @@ public class Ejercicio1_Servidor {
 	
 	private static String determinarGanador(Jugada j1, Jugada j2) {
 		if (j1.getOpcion() == j2.getOpcion()) return null;
+		
 		switch (j1.getOpcion()) {
 		case 1: return j2.getOpcion() == 3 ? j1.getJugador() : j2.getJugador();
 		case 2: return j2.getOpcion() == 1 ? j1.getJugador() : j2.getJugador();
@@ -23,6 +24,7 @@ public class Ejercicio1_Servidor {
 		int puerto = 65432;
 		ServerSocket servidor = new ServerSocket(puerto);
 		System.out.println("Esperando jugadores ...");
+		
 		Socket j1 = servidor.accept();
 		Socket j2 = servidor.accept();
 		

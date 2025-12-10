@@ -24,6 +24,7 @@ public class Ejercicio1_Cliente {
 		while (true) {
 			System.out.println((String) ois.readObject()); //pedir jugada
 			int opcion = Integer.parseInt(sc.nextLine());
+			
 			Jugada jugada = new Jugada(nombre, opcion);
 			oos.writeObject(jugada);
 			
