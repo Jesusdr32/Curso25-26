@@ -39,7 +39,7 @@ public class Jugada implements Serializable {
 		return juego;
 	}
 	
-	public void setTurno(String juego) {
+	public void setJuego(String juego) {
 		this.juego = juego;
 	}
 	
