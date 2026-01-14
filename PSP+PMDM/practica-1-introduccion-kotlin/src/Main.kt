@@ -1,26 +1,28 @@
 import java.util.Calendar
 
 fun main() {
-    println("Elige una de las siguientes opciones")
-    println("1 - Saber si un día es laborable o fin de semana")
-    println("2 - Divisibles entre 3")
-    println("3 - Siguiente divisible entre 7")
-    println("4 - Notas del aula")
-    println("5 - Divisibles entre 11")
-    println("6 - Calcula el precio del cine")
+    do {
+        println("Elige una de las siguientes opciones")
+        println("1 - Saber si un día es laborable o fin de semana")
+        println("2 - Divisibles entre 3")
+        println("3 - Siguiente divisible entre 7")
+        println("4 - Notas del aula")
+        println("5 - Divisibles entre 11")
+        println("6 - Calcula el precio del cine")
 
-    println("Selecciona una de las opciones: ")
-    val opcion = readLine()?.toIntOrNull()
+        println("Selecciona una de las opciones: ")
+        val opcion = readLine()?.toIntOrNull()
 
-    when(opcion) {
-        1 -> laborableONo()
-        2 -> divisible3()
-        3 -> divisible7()
-        4 -> notas()
-        5 -> divisible11()
-        6 -> precioCine()
-        else -> println("Error: Opción inválida")
-    }
+        when (opcion) {
+            1 -> laborableONo()
+            2 -> divisible3()
+            3 -> divisible7()
+            4 -> notas()
+            5 -> divisible11()
+            6 -> precioCine()
+            else -> println("La opción elegida no es válida")
+        }
+    } while (opcion in 1..6 )
 }
 
 fun laborableONo() {
@@ -108,5 +110,33 @@ fun divisible11() {
 }
 
 fun precioCine() {
+    println("Dime cuantas entradas vas a comprar:")
+    val numEntradas = readLine()!!.toInt()
+    println("Para que fechas son las entradas (mete la fecha en formato dd/mm/yyyy):")
+    val fecha = readLine() ?: " "
 
+    val partesFecha = fecha.split("/")
+
+    val cal = Calendar.getInstance()
+    if (partesFecha.size === 3)
+        cal.set(partesFecha[2].toInt(), partesFecha[1].toInt() - 1, partesFecha[0].toInt())
+    val esMiercoles = cal.get(Calendar.DAY_OF_WEEK) == Calendar.WEDNESDAY
+
+    var totalCompra = 0.0
+
+    for (i in 1 .. numEntradas) {
+        println("Dime la edad de la persona para la entrada $i")
+        val edad = readLine()!!.toInt()
+
+        val precio = when (edad) {
+            in 3 .. 14 -> 5.5
+            in 15 .. 64 -> if (esMiercoles) 6.0 else 9.6
+            in 65 .. 100 -> 4.5
+            else -> 0.0
+        }
+        println("El precio de la entrada de esta persona es $precio")
+        totalCompra += precio
+    }
+    println("--------------------------------------------------")
+    println("El precio total de las entradas es $totalCompra")
 }
