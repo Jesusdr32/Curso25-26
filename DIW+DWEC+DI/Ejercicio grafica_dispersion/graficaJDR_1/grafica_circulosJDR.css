@@ -1,0 +1,21 @@
+.container {
+  width: 1000px;
+  height: 600px;
+  /*  border: 2px gray dashed; */
+  position: relative;
+  margin: 20px auto;
+}
+
+.circle {
+  border-radius: 50%;
+  position: absolute;
+  box-sizing: border-box;
+}
+
+.info {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 1.2em;
+  background-color: rgb(38, 230, 230);
+  color: rgb(37, 70, 109);
+  text-align: center;
+}
