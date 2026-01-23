@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de éxitos musicales</title>
+</head>
+
+<body>
+    <div id="contenedor-control">
+        <h3>Filtros y Búsqueda</h3>
+
+        <label for="filtro-artista">Filtrar por artista:</label>
+        <input type="text" id="filtro-artista" placeholder="Escribe el nombre del artista ...">
+
+        <br><br>
+
+        <span>Tipo de artista:</span>
+        <input type="radio" id="tipo-todos" name="tipo-artista" value="todos" checked>
+        <label for="tipo-todos">Todos</label>
+
+        <input type="radio" id="tipo-solista" name="tipo-artista" value="Solista">
+        <label for="tipo-solista">Solista</label>
+
+        <input type="radio" id="tipo-grupo" name="tipo-artista" value="Grupo">
+        <label for="tipo-grupo">Grupo</label>
+
+        <br><br>
+
+        <nav id="paginacion">
+            <span>Páginas:</span>
+            <button type="button">1</button>
+            <button type="button">2</button>
+            <button type="button">3</button>
+            <button type="button">4</button>
+            <button type="button">5</button>
+            <button type="button">6</button>
+        </nav>
+    </div>
+
+    <hr>
+
+    <div id="contenedor-detalle">
+        <h3>Detalle del Éxito Seleccionado</h3>
+        <div id="detalle-contenido">
+            <p>Selecciona un éxito de la tabla para ver todos sus detalles.</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <div id="contenedor-tabla">
+        <h3>Tabla de Éxitos Musicales</h3>
+    </div>
+
+    <script src="datosExitosMusicales.js"></script>
+    <script src="listaExitosMusicales.js"></script>
+</body>
+
+</html>
