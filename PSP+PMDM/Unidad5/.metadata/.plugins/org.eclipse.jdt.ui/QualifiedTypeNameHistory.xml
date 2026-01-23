@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="jakarta.mail.Multipart"/>
+    <fullyQualifiedTypeName name="jakarta.mail.internet.InternetAddress"/>
+    <fullyQualifiedTypeName name="jakarta.mail.internet.MimeBodyPart"/>
+    <fullyQualifiedTypeName name="jakarta.mail.internet.MimeMessage"/>
+    <fullyQualifiedTypeName name="jakarta.mail.internet.MimeMultipart"/>
+    <fullyQualifiedTypeName name="sun.jvm.hotspot.tools.SysPropsDumper"/>
+    <fullyQualifiedTypeName name="java.util.Properties"/>
+    <fullyQualifiedTypeName name="jakarta.mail.Session"/>
+    <fullyQualifiedTypeName name="jakarta.mail.Message.RecipientType"/>
+</qualifiedTypeNameHistroy>

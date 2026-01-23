@@ -30,7 +30,20 @@
             <entry path="null"/>
         </endorsedDirs>
     </libraryInfo>
+    <libraryInfo home="C:\Users\jesus\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.8.v20250724-1412" version="21.0.8">
+        <bootpath>
+            <entry path="null"/>
+        </bootpath>
+        <extensionDirs>
+            <entry path="null"/>
+        </extensionDirs>
+        <endorsedDirs>
+            <entry path="null"/>
+        </endorsedDirs>
+    </libraryInfo>
+    <libraryInfo home="C:\Users\jesus\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.8.v20250724-1412\jre" version="21.0.8"/>
     <libraryInfo home="C:\Users\Vespertino\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_21.0.8.v20250724-1412\jre" version="21.0.8"/>
+    <libraryInfo home="C:\Program Files\Eclipse Adoptium\jdk-17.0.7.7-hotspot" version="17.0.7"/>
     <libraryInfo home="C:\Program Files\Java\jre1.8.0_451" version="1.8.0_451">
         <bootpath>
             <entry path="C:\Program Files\Java\jre1.8.0_451\lib\resources.jar"/>
