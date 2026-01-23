@@ -1,57 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de éxitos musicales</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="estilos.css">
 </head>
 
 <body>
-    <div id="contenedor-control">
-        <h3>Filtros y Búsqueda</h3>
 
-        <label for="filtro-artista">Filtrar por artista:</label>
-        <input type="text" id="filtro-artista" placeholder="Escribe el nombre del artista ...">
+    <div id="contenedor-control">
+        <h3>Filtros y búsqueda</h3>
+
+        <label>Buscar artista:</label>
+        <input type="text" id="filtro-artista">
+
+        <label>Buscar canción:</label>
+        <input type="text" id="filtro-cancion">
 
         <br><br>
 
         <span>Tipo de artista:</span>
-        <input type="radio" id="tipo-todos" name="tipo-artista" value="todos" checked>
-        <label for="tipo-todos">Todos</label>
-
-        <input type="radio" id="tipo-solista" name="tipo-artista" value="Solista">
-        <label for="tipo-solista">Solista</label>
-
-        <input type="radio" id="tipo-grupo" name="tipo-artista" value="Grupo">
-        <label for="tipo-grupo">Grupo</label>
+        <input type="radio" name="tipo-artista" value="todos" checked> Todos
+        <input type="radio" name="tipo-artista" value="Solista"> Solista
+        <input type="radio" name="tipo-artista" value="Grupo"> Grupo
 
         <br><br>
 
+        <label>Ordenar por:</label>
+        <select id="ordenar">
+            <option value="">Orden original</option>
+            <option value="artist_name">Artista</option>
+            <option value="song_name">Canción</option>
+            <option value="release_year">Año</option>
+        </select>
+
+        <label>Vista:</label>
+        <select id="vista">
+            <option value="tabla" selected>Tabla</option>
+            <option value="rejilla">Viñetas</option>
+        </select>
+
+        <br><br>
+
+        <button id="btn-listar">Listado</button>
+        <button id="btn-borrar">Borrar</button>
+
         <nav id="paginacion">
-            <span>Páginas:</span>
-            <button type="button">1</button>
-            <button type="button">2</button>
-            <button type="button">3</button>
-            <button type="button">4</button>
-            <button type="button">5</button>
-            <button type="button">6</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
         </nav>
     </div>
 
     <hr>
 
     <div id="contenedor-detalle">
-        <h3>Detalle del Éxito Seleccionado</h3>
+        <h3>Detalle del éxito</h3>
         <div id="detalle-contenido">
-            <p>Selecciona un éxito de la tabla para ver todos sus detalles.</p>
+            <p>Selecciona un éxito para ver el detalle</p>
         </div>
     </div>
 
     <hr>
 
-    <div id="contenedor-tabla">
-        <h3>Tabla de Éxitos Musicales</h3>
+    <div id="contenedor-principal">
+        <h3>Resultados</h3>
+        <div id="contenedor-tabla"></div>
     </div>
 
     <script src="datosExitosMusicales.js"></script>
