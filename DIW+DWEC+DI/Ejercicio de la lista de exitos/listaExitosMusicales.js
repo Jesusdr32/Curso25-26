@@ -2,7 +2,7 @@ let datosOriginales = [...exitos];
 let datosFiltrados = [...exitos];
 
 let paginaActual = 1;
-const REGISTROS_POR_PAGINA = 15;
+const REGISTROS_POR_PAGINA = 25;
 let vistaActual = "tabla";
 let criterioOrden = "";
 
