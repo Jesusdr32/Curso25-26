@@ -1,200 +1,192 @@
-/**
- * Lógica para la Lista de Éxitos Musicales
- */
-
-// 1. VARIABLES DE ESTADO
-// Usamos 'exitos' que es el nombre de tu array en datosExitosMusicales.js
-let datosOriginales = [...exitos]; 
+let datosOriginales = [...exitos];
 let datosFiltrados = [...exitos];
-let paginaActual = 1;
-const REGISTROS_POR_PAGINA = 25;
-let criterioOrden = null; // null significa el orden original (Nº Orden)
 
-// 2. INICIALIZACIÓN
+let paginaActual = 1;
+const REGISTROS_POR_PAGINA = 15;
+let vistaActual = "tabla";
+let criterioOrden = "";
+
 window.onload = () => {
     configurarEventos();
     renderizarTodo();
 };
 
 function configurarEventos() {
-    // Filtrado por texto (Input)
-    const inputBusqueda = document.getElementById('filtro-artista');
-    inputBusqueda.addEventListener('input', () => {
+
+    document.getElementById("filtro-artista").addEventListener("input", () => {
         paginaActual = 1;
         renderizarTodo();
     });
 
-    // Filtrado por radio buttons
-    const radios = document.getElementsByName('tipo-artista');
-    radios.forEach(radio => {
-        radio.addEventListener('change', () => {
+    document.getElementById("filtro-cancion").addEventListener("input", () => {
+        paginaActual = 1;
+        renderizarTodo();
+    });
+
+    document.querySelectorAll("input[name='tipo-artista']").forEach(r =>
+        r.addEventListener("change", () => {
             paginaActual = 1;
             renderizarTodo();
-        });
+        })
+    );
+
+    document.getElementById("ordenar").addEventListener("change", e => {
+        criterioOrden = e.target.value;
+        renderizarTodo();
     });
 
-    // Paginación (Botones ya existentes en tu HTML)
-    const botonesPagina = document.querySelectorAll('#paginacion button');
-    botonesPagina.forEach(boton => {
-        boton.addEventListener('click', (e) => {
+    document.getElementById("vista").addEventListener("change", e => {
+        vistaActual = e.target.value;
+        renderizarTodo();
+    });
+
+    document.getElementById("btn-listar").onclick = listarSeleccionados;
+    document.getElementById("btn-borrar").onclick = borrarSeleccionados;
+
+    document.querySelectorAll("#paginacion button").forEach(b =>
+        b.onclick = e => {
             paginaActual = parseInt(e.target.textContent);
             renderizarTodo();
-        });
-    });
+        }
+    );
 }
 
-// 3. PROCESAMIENTO Y RENDERIZADO
 function renderizarTodo() {
     aplicarFiltrosYOrden();
-    generarTablaDOM();
-    actualizarEstadoPaginacion();
-}
-
-function aplicarFiltrosYOrden() {
-    const texto = document.getElementById('filtro-artista').value.toLowerCase();
-    const tipoRadio = document.querySelector('input[name="tipo-artista"]:checked').value;
-
-    // A. Filtrar
-    datosFiltrados = datosOriginales.filter(item => {
-        const coincideArtista = item.artist_name.toLowerCase().includes(texto);
-        // Mapeamos 'Solo'/'Group' del JSON a 'Solista'/'Grupo' del radio
-        const tipoMapeado = item.group_or_solo === 'Group' ? 'Grupo' : 'Solista';
-        const coincideTipo = (tipoRadio === 'todos' || tipoMapeado === tipoRadio);
-        return coincideArtista && coincideTipo;
-    });
-
-    // B. Ordenar
-    if (criterioOrden) {
-        datosFiltrados.sort((a, b) => {
-            let valA = a[criterioOrden] || "";
-            let valB = b[criterioOrden] || "";
-            return valA > valB ? 1 : (valA < valB ? -1 : 0);
-        });
+    if (vistaActual === "tabla") {
+        generarTabla();
+    } else {
+        generarRejilla();
     }
 }
 
-// 4. GENERACIÓN DE LA TABLA (DOM PURO)
-function generarTablaDOM() {
-    const contenedor = document.getElementById('contenedor-tabla');
-    
-    // Mantener el H3 y limpiar lo anterior
-    const titulo = contenedor.querySelector('h3');
-    contenedor.innerHTML = '';
-    contenedor.appendChild(titulo);
+/* ===== FILTROS Y ORDEN ===== */
+function aplicarFiltrosYOrden() {
+    const art = document.getElementById("filtro-artista").value.toLowerCase();
+    const can = document.getElementById("filtro-cancion").value.toLowerCase();
+    const tipo = document.querySelector("input[name='tipo-artista']:checked").value;
 
-    const tabla = document.createElement('table');
-    tabla.setAttribute('border', '1');
-    tabla.style.width = "100%";
-    tabla.style.borderCollapse = "collapse";
-
-    // Cabecera
-    const thead = document.createElement('thead');
-    const filaH = document.createElement('tr');
-    const columnas = [
-        { label: 'Nº Orden', campo: null }, // Click aquí resetea orden
-        { label: 'Artista', campo: 'artist_name' },
-        { label: 'Canción', campo: 'song_name' },
-        { label: 'Año', campo: 'release_year' },
-        { label: 'Tipo', campo: null },
-        { label: 'Seleccionar', campo: null }
-    ];
-
-    columnas.forEach(col => {
-        const th = document.createElement('th');
-        th.textContent = col.label;
-        th.style.cursor = "pointer";
-        th.style.padding = "8px";
-        th.style.backgroundColor = "#f2f2f2";
-        
-        th.onclick = () => {
-            criterioOrden = col.campo; // Si es null, vuelve al orden original
-            renderizarTodo();
-        };
-        filaH.appendChild(th);
-    });
-    thead.appendChild(filaH);
-    tabla.appendChild(thead);
-
-    // Cuerpo
-    const tbody = document.createElement('tbody');
-    const inicio = (paginaActual - 1) * REGISTROS_POR_PAGINA;
-    const datosPagina = datosFiltrados.slice(inicio, inicio + REGISTROS_POR_PAGINA);
-
-    datosPagina.forEach((item, index) => {
-        const tr = document.createElement('tr');
-        tr.style.cursor = "pointer";
-        tr.onclick = () => mostrarDetalle(item);
-
-        // 1. Nº Orden
-        const tdOrden = document.createElement('td');
-        tdOrden.textContent = inicio + index + 1;
-        tr.appendChild(tdOrden);
-
-        // 2, 3, 4. Datos (Tratamiento de nulos)
-        const campos = ['artist_name', 'song_name', 'release_year'];
-        campos.forEach(c => {
-            const td = document.createElement('td');
-            td.textContent = (item[c] === null || item[c] === undefined) ? ' ' : item[c];
-            tr.appendChild(td);
-        });
-
-        // 5. Tipo (Literal)
-        const tdTipo = document.createElement('td');
-        tdTipo.textContent = item.group_or_solo === 'Group' ? 'Grupo' : 'Solista';
-        tr.appendChild(tdTipo);
-
-        // 6. Checkbox
-        const tdCheck = document.createElement('td');
-        const check = document.createElement('input');
-        check.type = 'checkbox';
-        check.onclick = (e) => e.stopPropagation(); // No abrir detalle al marcar check
-        tdCheck.appendChild(check);
-        tr.appendChild(tdCheck);
-
-        tbody.appendChild(tr);
+    datosFiltrados = datosOriginales.filter(e => {
+        const artistaOK = e.artist_name.toLowerCase().includes(art);
+        const cancionOK = e.song_name.toLowerCase().includes(can);
+        const tipoItem = e.group_or_solo === "Group" ? "Grupo" : "Solista";
+        const tipoOK = tipo === "todos" || tipo === tipoItem;
+        return artistaOK && cancionOK && tipoOK;
     });
 
-    tabla.appendChild(tbody);
-    contenedor.appendChild(tabla);
+    if (criterioOrden) {
+        datosFiltrados.sort((a, b) =>
+            a[criterioOrden] > b[criterioOrden] ? 1 : -1
+        );
+    }
 }
 
-// 5. DETALLE (ID: detalle-contenido)
-function mostrarDetalle(item) {
-    const contenedorDetalle = document.getElementById('detalle-contenido');
-    contenedorDetalle.innerHTML = ''; // Limpiar mensaje inicial
+/* ===== TABLA ===== */
+function generarTabla() {
+    const cont = document.getElementById("contenedor-tabla");
+    cont.innerHTML = "";
 
-    const ul = document.createElement('ul');
-    
-    // Los 6 campos (4 obligatorios + 2 elegidos: album_name y genre)
-    const camposMap = [
-        { e: 'Artista', v: item.artist_name },
-        { e: 'Canción', v: item.song_name },
-        { e: 'Año', v: item.release_year },
-        { e: 'Tipo', v: item.group_or_solo === 'Group' ? 'Grupo' : 'Solista' },
-        { e: 'Álbum', v: item.album_name },
-        { e: 'Género', v: item.genre }
-    ];
+    const tabla = document.createElement("table");
+    tabla.innerHTML = `
+        <tr>
+            <th></th>
+            <th>Artista</th>
+            <th>Canción</th>
+            <th>Año</th>
+            <th>Ranking</th>
+            <th>Tipo</th>
+        </tr>
+    `;
 
-    camposMap.forEach(campo => {
-        const li = document.createElement('li');
-        const valorLimpio = (campo.v === null || campo.v === undefined) ? ' ' : campo.v;
-        li.innerHTML = `<strong>${campo.e}:</strong> ${valorLimpio}`;
-        ul.appendChild(li);
+    paginaDatos().forEach(e => {
+        tabla.innerHTML += `
+        <tr onclick="mostrarDetalle(${e.id})">
+            <td><input type="checkbox" data-id="${e.id}" onclick="event.stopPropagation()"></td>
+            <td>${e.artist_name}</td>
+            <td>${e.song_name}</td>
+            <td>${e.release_year}</td>
+            <td>${e.ranking}</td>
+            <td>${e.group_or_solo === "Group" ? "Grupo" : "Solista"}</td>
+        </tr>`;
     });
 
-    contenedorDetalle.appendChild(ul);
+    cont.appendChild(tabla);
 }
 
-// 6. UTILIDAD PARA BOTONES DE PAGINACIÓN
-function actualizarEstadoPaginacion() {
-    const botones = document.querySelectorAll('#paginacion button');
-    botones.forEach(btn => {
-        if (parseInt(btn.textContent) === paginaActual) {
-            btn.style.backgroundColor = "#ccc";
-            btn.style.fontWeight = "bold";
+/* ===== REJILLA ===== */
+function generarRejilla() {
+    const cont = document.getElementById("contenedor-tabla");
+    cont.innerHTML = "";
+
+    const grid = document.createElement("div");
+    grid.className = "contenedor";
+
+    paginaDatos().forEach(e => {
+        const card = document.createElement("div");
+        card.className = "tarjeta";
+        card.onclick = () => mostrarDetalle(e.id);
+
+        if (e.video) {
+            card.innerHTML = `
+                <video controls poster="${e.imagen}">
+                    <source src="${e.video}" type="video/mp4">
+                </video>
+            `;
         } else {
-            btn.style.backgroundColor = "";
-            btn.style.fontWeight = "normal";
+            card.innerHTML = `<img src="${e.imagen}">`;
         }
+
+        card.innerHTML += `
+            <p><strong>${e.artist_name}</strong></p>
+            <p>${e.song_name}</p>
+            <p>${e.release_year}</p>
+            <p>Ranking: ${e.ranking}</p>
+            <p>${e.group_or_solo === "Group" ? "Grupo" : "Solista"}</p>
+            <input type="checkbox" data-id="${e.id}" onclick="event.stopPropagation()">
+        `;
+
+        grid.appendChild(card);
     });
+
+    cont.appendChild(grid);
+}
+
+/* ===== DETALLE ===== */
+function mostrarDetalle(id) {
+    const e = datosOriginales.find(x => x.id === id);
+    const d = document.getElementById("detalle-contenido");
+
+    d.innerHTML = `
+        <ul>
+            <li><strong>Artista:</strong> ${e.artist_name}</li>
+            <li><strong>Canción:</strong> ${e.song_name}</li>
+            <li><strong>Año:</strong> ${e.release_year}</li>
+            <li><strong>Ranking:</strong> ${e.ranking}</li>
+            <li><strong>Álbum:</strong> ${e.album_name}</li>
+            <li><strong>Género:</strong> ${e.genre}</li>
+        </ul>
+    `;
+}
+
+/* ===== LISTADO / BORRADO ===== */
+function seleccionados() {
+    return [...document.querySelectorAll("input[type='checkbox']:checked")]
+        .map(c => parseInt(c.dataset.id));
+}
+
+function listarSeleccionados() {
+    const ids = seleccionados();
+    const lista = datosOriginales.filter(e => ids.includes(e.id));
+    alert(lista.map(e => `${e.artist_name} - ${e.song_name}`).join("\n"));
+}
+
+function borrarSeleccionados() {
+    const ids = seleccionados();
+    datosOriginales = datosOriginales.filter(e => !ids.includes(e.id));
+    renderizarTodo();
+}
+
+function paginaDatos() {
+    const i = (paginaActual - 1) * REGISTROS_POR_PAGINA;
+    return datosFiltrados.slice(i, i + REGISTROS_POR_PAGINA);
 }
