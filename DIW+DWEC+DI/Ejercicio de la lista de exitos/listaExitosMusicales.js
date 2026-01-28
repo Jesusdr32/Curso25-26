@@ -1,4 +1,6 @@
-let datosOriginales = [...exitos];
+let datosOriginales = exitos.map((e, i) => ({
+    id: i + 1, ...e
+}));
 let datosFiltrados = [...exitos];
 
 let paginaActual = 1;
@@ -75,9 +77,16 @@ function aplicarFiltrosYOrden() {
     });
 
     if (criterioOrden) {
-        datosFiltrados.sort((a, b) =>
-            a[criterioOrden] > b[criterioOrden] ? 1 : -1
-        );
+        datosFiltrados.sort((a, b) => {
+            const valA = a[criterioOrden];
+            const valB = b[criterioOrden];
+
+            if (valA == null && valB != null) return 1;
+            if (valA != null && valB == null) return -1;
+            if (valA == null && valB == null) return 0;
+
+            return valA > valB ? 1 : valA < valB ? -1 : 0;
+        });
     }
 }
 
@@ -104,7 +113,7 @@ function generarTabla() {
             <td><input type="checkbox" data-id="${e.id}" onclick="event.stopPropagation()"></td>
             <td>${e.artist_name}</td>
             <td>${e.song_name}</td>
-            <td>${e.release_year}</td>
+            <td>${e.release_year ?? ''}</td>
             <td>${e.ranking}</td>
             <td>${e.group_or_solo === "Group" ? "Grupo" : "Solista"}</td>
         </tr>`;
@@ -126,20 +135,13 @@ function generarRejilla() {
         card.className = "tarjeta";
         card.onclick = () => mostrarDetalle(e.id);
 
-        if (e.video) {
-            card.innerHTML = `
-                <video controls poster="${e.imagen}">
-                    <source src="${e.video}" type="video/mp4">
-                </video>
-            `;
-        } else {
-            card.innerHTML = `<img src="${e.imagen}">`;
-        }
-
         card.innerHTML += `
+            <div class="imagen-tarjeta">
+                <img src="${e.image_url ?? 'https://via.placeholder.com/150'}" alt="${e.song_name}">
+            </div>
             <p><strong>${e.artist_name}</strong></p>
             <p>${e.song_name}</p>
-            <p>${e.release_year}</p>
+            <p>${e.release_year ?? ''}</p>
             <p>Ranking: ${e.ranking}</p>
             <p>${e.group_or_solo === "Group" ? "Grupo" : "Solista"}</p>
             <input type="checkbox" data-id="${e.id}" onclick="event.stopPropagation()">
@@ -160,9 +162,9 @@ function mostrarDetalle(id) {
         <ul>
             <li><strong>Artista:</strong> ${e.artist_name}</li>
             <li><strong>Canción:</strong> ${e.song_name}</li>
-            <li><strong>Año:</strong> ${e.release_year}</li>
+            <li><strong>Año:</strong> ${e.release_year ?? ''}</li>
             <li><strong>Ranking:</strong> ${e.ranking}</li>
-            <li><strong>Álbum:</strong> ${e.album_name}</li>
+            <li><strong>Álbum:</strong> ${e.album_name ?? ''}</li>
             <li><strong>Género:</strong> ${e.genre}</li>
         </ul>
     `;
@@ -177,7 +179,27 @@ function seleccionados() {
 function listarSeleccionados() {
     const ids = seleccionados();
     const lista = datosOriginales.filter(e => ids.includes(e.id));
-    alert(lista.map(e => `${e.artist_name} - ${e.song_name}`).join("\n"));
+    const d = document.getElementById("detalle-contenido")
+
+    if (lista.length === 0) {
+        d.innerHTML = "<p>No hay elementos seleccionados.</p>";
+        return;
+    }
+
+    d.innerHTML = lista.map(e => {
+        const campos = Object.entries(e)
+                        .filter(([key, value]) => value != null && key !== 'id')
+                        .map(([key, value]) => `<li><strong>${formatearCampo(key)}:</strong> ${value}</li>`)
+                        .join("");
+
+        return `<div class="seleccionados"><ul>${campos}</ul></div>`;
+    }).join("");
+}
+
+function formatearCampo(campo) {
+    return campo
+            .replace(/_/g, " ") // cambia guion bajo por espacio
+            .replace(/\b\w/g, l => l.toUpperCase()); // capitalizar primera letra
 }
 
 function borrarSeleccionados() {
