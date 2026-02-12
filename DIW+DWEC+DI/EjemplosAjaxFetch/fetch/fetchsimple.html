@@ -1,0 +1,25 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo simple de uso de FETCH</title>
+
+    <style>
+      div {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <p>EJEMPLO SIMPLE FETCH</p>
+    <form action="#" method="get">
+      <input type="button" value="Pedir Datos Texto" onclick="fajax('txt')" />
+      <hr />
+      <input type="button" value="Pedir Datos JSON" onclick="fajax('json')" />
+    </form>
+
+    <div id="capa"></div>
+  </body>
+  <script src="fetchsimple.js"></script>
+</html>
