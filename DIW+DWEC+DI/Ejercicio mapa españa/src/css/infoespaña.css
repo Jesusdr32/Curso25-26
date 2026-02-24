@@ -1,0 +1,81 @@
+* {
+  font-family: "Varela Round", sans-serif;
+  font-size: 10px;
+}
+
+div {
+  border: 1px solid black;
+  margin: 5px;
+}
+
+#controles {
+  display: flex;
+  justify-content: space-around;
+}
+
+.control {
+  box-shadow: 3px 3px 2px rgb(44, 3, 3);
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+
+.desplegable {
+  min-width: 10rem;
+  background-color: rgb(216, 76, 76);
+  color: rgb(219, 219, 124);
+}
+
+.boton {
+  border: none;
+  padding: 10px;
+  background-color: rgb(226, 51, 51);
+  color: rgb(219, 219, 124);
+}
+
+.mensajes {
+  position: absolute;
+  background-color: rgb(104, 31, 31);
+  color: rgb(172, 172, 69);
+  font-size: 1.5rem;
+  text-align: center;
+  box-shadow: 5px 5px 2px rgb(44, 3, 3);
+  border-radius: 10px;
+}
+
+#avisos {
+  left: 20%;
+  top: 15%;
+  width: 50%;
+  min-height: 15vh;
+  padding-top: 4rem;
+  display: block;
+}
+
+#detalle {
+  left: 30%;
+  top: 30%;
+  width: 30%;
+  min-height: 15vh;
+  padding-top: 4rem;
+  display: block;
+}
+
+.panel {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.comunidad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 5px 5px 3px grey;
+}
+
+.ver-detalle {
+  border-radius: 3px;
+  box-shadow: 5px 5px 3px rgb(41, 40, 40);
+  margin-bottom: 5px;
+}
