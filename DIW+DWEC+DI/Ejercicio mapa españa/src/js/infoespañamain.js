@@ -1,13 +1,12 @@
-const continfo = document.getElementById("info");
+document.addEventListener("DOMContentLoaded", function() {
 
-const contComunidades = document.getElementById("selcomunidad");
+  document.getElementById("avisos").style.display = "none";
+  document.getElementById("detalle").style.display = "none";
 
-document.getElementById("avisos").style.display = "none";
-document.getElementById("detalle").style.display = "none";
+  document.getElementById("cargadato")
+    .addEventListener("click", cargarDatos);
 
-const tablero = document.getElementById("tablero");
+  document.getElementById("tablero")
+    .addEventListener("click", mostrarRejilla);
 
-tablero.addEventListener("click", function() {
-    continfo.style.display = "block";
-    mostrarRejilla(continfo);
-})
+});

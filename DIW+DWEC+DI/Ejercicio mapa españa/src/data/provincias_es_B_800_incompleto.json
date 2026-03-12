@@ -1,0 +1,266 @@
+[
+  {
+    "id": "AB",
+    "nombre": "Albacete",
+    "comunidad": "Castilla - La Mancha",
+    "hab_mil": 396,
+    "x": 428,
+    "y": 285
+  },
+  {
+    "id": "AL",
+    "nombre": "Almería",
+    "comunidad": "Andalucía",
+    "hab_mil": 689,
+    "x": 408,
+    "y": 375
+  },
+  {
+    "id": "BA",
+    "nombre": "Badajoz",
+    "comunidad": "Extremadura",
+    "hab_mil": 687,
+    "x": 198,
+    "y": 292
+  },
+  {
+    "id": "PM",
+    "nombre": "Islas Baleares",
+    "comunidad": "Islas Baleares",
+    "hab_mil": 1122,
+    "x": 699,
+    "y": 244
+  },
+  {
+    "id": "CC",
+    "nombre": "Cáceres",
+    "comunidad": "Extremadura",
+    "hab_mil": 407,
+    "x": 196,
+    "y": 237
+  },
+  {
+    "id": "CA",
+    "nombre": "Cádiz",
+    "comunidad": "Andalucía",
+    "hab_mil": 1248,
+    "x": 219,
+    "y": 410
+  },
+  {
+    "id": "CS",
+    "nombre": "Castellón",
+    "comunidad": "Comunidad Valenciana",
+    "hab_mil": 575,
+    "x": 530,
+    "y": 208
+  },
+  {
+    "id": "C",
+    "nombre": "La Coruña",
+    "comunidad": "Galicia",
+    "hab_mil": 1130,
+    "x": 69,
+    "y": 49
+  },
+  {
+    "id": "CU",
+    "nombre": "Cuenca",
+    "comunidad": "Castilla - La Mancha",
+    "hab_mil": 207,
+    "x": 416,
+    "y": 226
+  },
+  {
+    "id": "GR",
+    "nombre": "Granada",
+    "comunidad": "Andalucía",
+    "hab_mil": 920,
+    "x": 357,
+    "y": 368
+  },
+  {
+    "id": "GU",
+    "nombre": "Guadalajara",
+    "comunidad": "Castilla - La Mancha",
+    "hab_mil": 255,
+    "x": 392,
+    "y": 176
+  },
+  {
+    "id": "H",
+    "nombre": "Huelva",
+    "comunidad": "Andalucía",
+    "hab_mil": 522,
+    "x": 159,
+    "y": 354
+  },
+  {
+    "id": "HU",
+    "nombre": "Huesca",
+    "comunidad": "Aragón",
+    "hab_mil": 223,
+    "x": 534,
+    "y": 100
+  },
+  {
+    "id": "J",
+    "nombre": "Jaén",
+    "comunidad": "Andalucía",
+    "hab_mil": 654,
+    "x": 347,
+    "y": 330
+  },
+  {
+    "id": "LE",
+    "nombre": "León",
+    "comunidad": "Castilla y León",
+    "hab_mil": 482,
+    "x": 214,
+    "y": 77
+  },
+  {
+    "id": "LU",
+    "nombre": "Lugo",
+    "comunidad": "Galicia",
+    "hab_mil": 340,
+    "x": 125,
+    "y": 56
+  },
+  {
+    "id": "M",
+    "nombre": "Madrid",
+    "comunidad": "Comunidad de Madrid",
+    "hab_mil": 6377,
+    "x": 332,
+    "y": 194
+  },
+  {
+    "id": "MA",
+    "nombre": "Málaga",
+    "comunidad": "Andalucía",
+    "hab_mil": 1626,
+    "x": 276,
+    "y": 396
+  },
+  {
+    "id": "OR",
+    "nombre": "Orense",
+    "comunidad": "Galicia",
+    "hab_mil": 320,
+    "x": 117,
+    "y": 100
+  },
+  {
+    "id": "O",
+    "nombre": "Asturias",
+    "comunidad": "Asturias, Principado de",
+    "hab_mil": 1054,
+    "x": 206,
+    "y": 40
+  },
+  {
+    "id": "P",
+    "nombre": "Palencia",
+    "comunidad": "Castilla y León",
+    "hab_mil": 166,
+    "x": 286,
+    "y": 91
+  },
+  {
+    "id": "GC",
+    "nombre": "Las Palmas",
+    "comunidad": "Canarias",
+    "hab_mil": 1103,
+    "x": 172,
+    "y": 402
+  },
+  {
+    "id": "PO",
+    "nombre": "Pontevedra",
+    "comunidad": "Galicia",
+    "hab_mil": 949,
+    "x": 69,
+    "y": 87
+  },
+  {
+    "id": "SA",
+    "nombre": "Salamanca",
+    "comunidad": "Castilla y León",
+    "hab_mil": 343,
+    "x": 202,
+    "y": 177
+  },
+  {
+    "id": "TF",
+    "nombre": "Santa Cruz de Tenerife",
+    "comunidad": "Canarias",
+    "hab_mil": 1018,
+    "x": 85,
+    "y": 404
+  },
+  {
+    "id": "SG",
+    "nombre": "Segovia",
+    "comunidad": "Castilla y León",
+    "hab_mil": 159,
+    "x": 313,
+    "y": 156
+  },
+  {
+    "id": "SE",
+    "nombre": "Sevilla",
+    "comunidad": "Andalucía",
+    "hab_mil": 1937,
+    "x": 223,
+    "y": 361
+  },
+  {
+    "id": "SO",
+    "nombre": "Soria",
+    "comunidad": "Castilla y León",
+    "hab_mil": 92,
+    "x": 394,
+    "y": 132
+  },
+  {
+    "id": "TO",
+    "nombre": "Toledo",
+    "comunidad": "Castilla - La Mancha",
+    "hab_mil": 693,
+    "x": 308,
+    "y": 232
+  },
+  {
+    "id": "V",
+    "nombre": "Valencia",
+    "comunidad": "Comunidad Valenciana",
+    "hab_mil": 2522,
+    "x": 493,
+    "y": 255
+  },
+  {
+    "id": "VA",
+    "nombre": "Valladolid",
+    "comunidad": "Castilla y León",
+    "hab_mil": 528,
+    "x": 269,
+    "y": 131
+  },
+  {
+    "id": "ZA",
+    "nombre": "Zamora",
+    "comunidad": "Castilla y León",
+    "hab_mil": 185,
+    "x": 206,
+    "y": 126
+  },
+  {
+    "id": "Z",
+    "nombre": "Zaragoza",
+    "comunidad": "Aragón",
+    "hab_mil": 967,
+    "x": 479,
+    "y": 132
+  }
+]

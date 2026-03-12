@@ -1,24 +1,73 @@
+FASE 1: APLICACIÓN EN DESARROLLO
 - Servidor en la nube
-	- Modo prototipo (0 a 1.70 €/mes)
-	- Modo MVP en producción (25.49 a 55.23 €/mes)
-- Dominio para la web (IONOS)
-	- Los primeros 6 meses (8 €/mes)
-	- Resto del tiempo (16 €/mes)
-- Nuestro salario (1221 €/mes brutos en 14 pagas * 3 personas)
-- Pago de las APIs 
-	- iNaturalist (Gratuita)
-	- Plant.id (0.043 €/identificación)
-	- Pl@ntNet (Gratuita los primeros 500 días, luego tiene planes "Play as you go")
-	- BirdNet (Gratuita)
-	- Clarifai (0.0010 €/foto)
-	- Mapbox (Gratuita con los primeros 25000 usuarios, después, 3.40 a 4.25 €/1000 usuarios adicionales)
-- Costes de personal externo 
-	- Gestor empresarial 
-		- Junior (17.01 a 34.01 €/hora)
-		- Senior (42.52 a 76.53 €/hora)
-	- Expertos para contrastar info (21.26 a 42.52 €/hora)
-	- Departamento de marketing (1500 a 2900 €/mes)
+	- Modo desarrollo y testing (AWS / Google Cloud) 120 €/mes
 
-TOTAL/mes (Prototipo) = 8359.87 €
+- Dominio web (IONOS o similar)
+	-Primer año 10 €/mes
+	- A partir del segundo año 16 €/mes
+	(Estimación media mensual anualizada 12 €/mes)
 
-TOTAL/mes (MVP) = 7942.38 €
+-Nuestro salario (3 personas)
+	Salario bruto estimado:
+	1221 € brutos x 14 pagas = 17094 €/año
+
+- Pago de las APIs (uso reducido en fase de desarrollo)
+	- Plant.id (uso limitado pruebas) 150 €
+	- Clarifai 50 €
+	- Mapbox servicio gratuito primeros usuarios
+	- iNaturalist/BirdNet/Pl@ntNet servicio gratuito
+	Total APIs desarrollo: 200 €/mes
+
+- Costes de personal externo
+	Gestor empresarial 300 €/mes
+	Asesoría legal puntual (RGPD, términos uso prorrateado) 200 €/mes
+	Expertos validación científica puntutal 300 €/mes
+	Total externo: 800 €/mes
+
+- Software y herramientas (Figma, repositorios privados, automatización, herramientas IA, CRM básico) 150 €/mes
+
+TOTAL DESARROLLO ≈ 5555.50 €/mes
+
+FASE 2: APLICACIÓN EN PRODUCCIÓN (MVP EN MERCADO)
+	(Con usuarios activos y estrategia de crecimiento)
+- Servidor en la nube
+	Infraestructura escalable + almacenamiento imágenes + tráfico medio (5000 - 10000 usuarios activos) 250 €/mes
+
+- Dominio web 16 €/mes
+
+- Nuestro salario (3 personas)
+	Salario bruto estimado:
+	1221 € brutos x 14 pagas = 17094 €/año
+
+-Pago de las APIs (escenario realista uso medio)
+	Suposición: 5000 usuarios activos, 10 identificaciones/mes promedio
+	Estimación combinada APIs:
+		Plant.id 900 €/mes
+		Clarifai 100 €/mes
+		Mapbox 100 €/mes
+		Otros servicios 100 €/mes
+	Total APIs producción: 1200 €/mes
+
+- Costes de personal externo
+	Gestoría continua 300 €/mes
+	Soporte / moderación media jornada 900 €/mes
+	Asesoría legal mantenimiento 200 €/mes
+	Total externo: 1800 €/mes
+
+- Departamento de marketing
+	Agencia marketing externa 1200 €/mes
+	Presupuesto Ads (Meta + Google) 1500 €/mes
+	Diseño puntual adicional 300 €/mes
+	Total marketing: 3000 €/mes
+
+- Software y herramientas 200 €/mes
+
+- Seguro resposabilidad civil 60 €/mes
+
+TOTAL MVP ≈ 10799.50 €/mes
+
+
+
+
+
+
