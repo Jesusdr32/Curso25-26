@@ -1,0 +1,35 @@
+FASE 1: APLICACIÓN EN DESARROLLO
+
+Costes Fijos: 
+- Servidor 120 €/mes
+- Dominio Web 12 €/mes
+- Salarios empleados 17394 €/mes
+- Pago de las APIs 200 €/mes
+- Material (ordenadores, etc) 3000 €
+- Herramientas y software 150 €/mes
+- Seguro responsabilidad civil 60 €/mes
+
+Costes Variables:
+- Salarios de empleados puntuales 500 €/mes
+
+Precio de la aplicación: 49.99 €/año = 4.17 €/mes por usuario
+Cobro por anuncios en la aplicación: 0.50 €/mes por usuario
+
+Umbral de rentabilidad = 18436 / 4.67 = 3950 usuarios
+
+FASE 2: APLICACIÓN EN PRODUCCIÓN (MVP EN MERCADO)
+
+Costes fijos: 
+- Servidor 250 €/mes
+- Dominio Web 16 €/mes
+- Salarios empleados 19694 €/mes
+- Herramientas y software 200 €/mes
+- Seguro responsabilidad civil 60 €/mes
+
+Costes Variables:
+- Pago de las APIs 1200 €/mes
+- Presupuesto Ads 1500 €/mes
+- Diseño puntual 300 €/mes
+
+Precio de la aplicación: 79.99 €/año
+Cobro por anuncios en la aplicación: ?
