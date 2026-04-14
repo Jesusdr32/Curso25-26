@@ -8,8 +8,12 @@ const REGISTROS_POR_PAGINA = 25;
 let vistaActual = "tabla";
 let criterioOrden = "";
 
+const NUM_VIDEOS = 2;
+let idsVideo = [];
+
 window.onload = () => {
     configurarEventos();
+    elegirTarjetasConVideo();
     renderizarTodo();
 };
 
@@ -133,11 +137,29 @@ function generarRejilla() {
     paginaDatos().forEach(e => {
         const card = document.createElement("div");
         card.className = "tarjeta";
-        card.onclick = () => mostrarDetalle(e.id);
+        card.onclick = () => {
+            mostrarDetalle(e.id);
+
+            if (esVideo) {
+                const video = card.querySelector("video");
+                if (video.paused) video.play();
+                else video.pause();
+            }
+        }
+        const esVideo = idsVideo.includes(e.id);
 
         card.innerHTML += `
             <div class="imagen-tarjeta">
-                <img src="${e.image_url ?? 'https://via.placeholder.com/150'}" alt="${e.song_name}">
+                ${esVideo ? `<video
+                                poster="${e.image_url ?? `https://picsum.photos/seed/${e.id}/400/300`}"
+                                muted
+                                preload="none"
+                                width="400"
+                                height="300">
+                                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"
+                            </video>`
+                        :
+                    `<img src="${e.image_url ?? `https://picsum.photos/seed/${e.id}/400/300`}" alt="${e.song_name}">`}
             </div>
             <p><strong>${e.artist_name}</strong></p>
             <p>${e.song_name}</p>
@@ -211,4 +233,15 @@ function borrarSeleccionados() {
 function paginaDatos() {
     const i = (paginaActual - 1) * REGISTROS_POR_PAGINA;
     return datosFiltrados.slice(i, i + REGISTROS_POR_PAGINA);
+}
+
+function elegirTarjetasConVideo() {
+    const ids = datosOriginales.map(e => e.id);
+
+    while (idsVideo.length < NUM_VIDEOS) {
+        const randomId = ids[Math.floor(Math.random() * ids.length)];
+        if (!idsVideo.includes(randomId)) {
+            idsVideo.push(randomId);
+        }
+    }
 }

@@ -45,6 +45,24 @@ video {
 /* ===== RESPONSIVE (1 breakpoint) ===== */
 @media (max-width: 900px) {
     .contenedor {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+    }
+
+    .tarjeta img,
+    .tarjeta video {
+        height:auto;
+    }
+
+    table thead {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+
+    table td {
+        display: block;
+        border: none;
+        padding: 4px 0;
     }
 }
