@@ -5,7 +5,7 @@ Costes Fijos:
 - Dominio Web 12 €/mes
 - Salarios empleados 17394 €/mes
 - Pago de las APIs 200 €/mes
-- Material (ordenadores, etc) 3000 €
+- Material (ordenadores, etc.) 3000 €
 - Herramientas y software 150 €/mes
 - Seguro responsabilidad civil 60 €/mes
 
@@ -31,5 +31,7 @@ Costes Variables:
 - Presupuesto Ads 1500 €/mes
 - Diseño puntual 300 €/mes
 
-Precio de la aplicación: 79.99 €/año
-Cobro por anuncios en la aplicación: ?
+Precio de la aplicación: 79.99 €/año = 6.67 €/mes por usuario
+Cobro por anuncios en la aplicación: 1 €/mes por usuario
+
+Umbral de rentabilidad = 23220 / 7.67 = 3030 usuarios

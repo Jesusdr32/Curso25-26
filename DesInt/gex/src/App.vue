@@ -1,8 +1,5 @@
 <template>
-  <MainLayout />
+  <v-app>
+    <router-view />
+  </v-app>
 </template>
-
-<script>
-import MainLayout from './layouts/MainLayout.vue';
-export default { components: { MainLayout } }
-</script>
