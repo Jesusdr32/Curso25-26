@@ -68,22 +68,31 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import MainLayout from '@/layouts/MainLayout.vue'
+import { fetchCategories, fetchProducts } from '@/services/api'
 
 const router = useRouter()
+
 const categories = ref([])
 const featuredProduct = ref(null)
+const loading = ref(true)
 
-const goToCategory = (id) => {
-    router.push(`/products?category=${id}`)
+const goToCategory = (categoryId) => {
+    router.push(`/products?category=${categoryId}`)
 }
 
 onMounted(async () => {
-    const categoriesResponse = await fetch('http://localhost:8000/categories')
-    categories.value = await categoriesResponse.json()
+    try {
+        categories.value = await fetchCategories()
 
-    const productsResponse = await fetch('http://localhost:8000/products')
-    const products = await productsResponse.json()
+        const products = await fetchProducts()
 
-    featuredProduct.value = products[0]
+        if (products.length > 0) {
+            featuredProduct.value = products[0]
+        }
+    } catch (error) {
+        console.error(error)
+    } finally {
+        loading.value = false
+    }
 })
 </script>

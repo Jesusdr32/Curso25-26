@@ -26,8 +26,31 @@
             <v-dialog v-model="dialog" width="500">
                 <v-card class="pa-6">
                     <h2 class="mb-4">Información enviada</h2>
+                    <p><strong>Nombre: </strong>{{ name }}</p>
+                    <p><strong>Email: </strong>{{ email }}</p>
+                    <p><strong>Mensaje: </strong>{{ message }}</p>
+
+                    <v-btn color="primary" class="mt-4" @click="dialog = false">
+                        Aceptar
+                    </v-btn>
                 </v-card>
             </v-dialog>
         </v-container>
     </MainLayout>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+import MainLayout from '@/layouts/MainLayout.vue'
+
+const name = ref('')
+const email = ref('')
+const message = ref('')
+const accepted = ref(false)
+const dialog = ref(false)
+
+const sendForm = () => {
+    if (!accepted.value) return
+    dialog.value = true
+}
+</script>

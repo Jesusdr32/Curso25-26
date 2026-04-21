@@ -30,11 +30,11 @@
                                 <v-img :src="product.image" height="200" cover />
 
                                 <v-card-title>
-                                    {{ product.title }}
+                                    {{ product.name }}
                                 </v-card-title>
 
                                 <v-card-subtitle>
-                                    {{ product.brand }}
+                                    {{ product.brand?.name }}
                                 </v-card-subtitle>
 
                                 <v-card-text>
@@ -56,9 +56,14 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import MainLayout from '@/layouts/MainLayout.vue';
+import {
+    fetchProducts,
+    fetchCategories,
+    fetchProductsByCategory
+} from '@/services/api'
 
 const route = useRoute()
 
@@ -66,22 +71,24 @@ const products = ref([])
 const categories = ref([])
 const search = ref('')
 const selectedCategory = ref(route.query.category || null)
+const selectedBrand = ref(null)
 const sortOption = ref('Nombre')
+const loading = ref(true)
 
 const sortOptions = ['Nombre', 'Precio menor', 'Precio mayor']
 
-const filteredProducts = computed(() => {
+const brands = computed(() => {
     let filtered = [...products.value]
 
     if (search.value) {
-        filtered = filtered.filter(product =>
-            product.title.toLowerCase().includes(search.value.toLowerCase())
+        filtered = filtered.filter(product => 
+            product.name.toLowerCase().includes(search.value.toLowerCase())
         )
     }
 
-    if (selectedCategory.value) {
-        filtered = filtered.filter(product =>
-            String(product.categoryId) === String(selectedCategory.value)
+    if (selectedBrand.value) {
+        filtered = filtered.filter(
+            product => product.brand?.name === selectedBrand.value
         )
     }
 
@@ -89,22 +96,47 @@ const filteredProducts = computed(() => {
         filtered.sort((a, b) => a.price - b.price)
     }
 
-    if (sortOption.value === 'Precio menor') {
+    if (sortOption.value === 'Precio mayor') {
         filtered.sort((a, b) => b.price - a.price)
     }
 
     if (sortOption.value === 'Nombre') {
-        filtered.sort((a, b) => a.title.localeCompare(b.title))
+        filtered.sort((a, b) => a.name.localCompare(b.name))
     }
 
     return filtered
 })
 
-onMounted(async () => {
-    const productsResponse = await fetch('http://localhost:8000/products')
-    products.value = await productsResponse.json()
+const loadProducts = async() => {
+    loading.value = true
 
-    const categoriesResponse = await fetch('http://localhost:8000/categories')
-    categories.value = await categoriesResponse.json()
+    try {
+        if (selectedCategory.value) {
+            products.value = await fetchProductsByCategory(selectedCategory.value)
+        } else {
+            products.value = await fetchProducts()
+        }
+    } catch(error) {
+        console.error(error)
+    } finally {
+        loading.value = false
+    }
+}
+
+watch(
+    () => route.query.category,
+    async (newCategory) => {
+        selectedCategory.value = newCategory || null
+        await loadProducts()
+    }
+)
+
+onMounted(async () => {
+    try {
+        categories.value = await fetchCategories()
+        await loadProducts()
+    } catch (error) {
+        console.error(error)
+    }
 })
 </script>
