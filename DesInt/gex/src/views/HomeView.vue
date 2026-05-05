@@ -3,7 +3,7 @@
         <v-container class="py-10">
             <v-row>
                 <v-col cols="12">
-                    <v-sheet color="primary" class="rounded-x1 pa-10 text-center text-white">
+                    <v-sheet color="primary" class="rounded-xl pa-10 text-center text-white">
                         <h1 class="text-h3 font-weight-bold mb-4">
                             Bienvenido a GEX
                         </h1>
@@ -45,7 +45,7 @@
                         <v-img :src="featuredProduct.image" height="300" cover />
 
                         <v-card-title>
-                            {{ featuredProduct.title }}
+                            {{ featuredProduct.name }}
                         </v-card-title>
 
                         <v-card-text>
@@ -64,7 +64,7 @@
     </MainLayout>
 </template>
 
-<script>
+<script setup>
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import MainLayout from '@/layouts/MainLayout.vue'

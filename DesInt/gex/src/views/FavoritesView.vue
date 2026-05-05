@@ -13,7 +13,7 @@
                         <v-img :src="product.image" height="200" cover />
 
                         <v-card-title>
-                            {{ product.title }}
+                            {{ product.name }}
                         </v-card-title>
 
                         <v-card-actions>

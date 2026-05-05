@@ -4,10 +4,12 @@ import {
     fetchProductsByCategory
 } from './api'
 
-export async function getAllProducts() {
-    const products = await fetchProducts()
+function normalizeProducts(response) {
+    return Array.isArray(response) ? response : response?.data || []
+}
 
-    return products.map(product => ({
+function formatProduct(product) {
+    return {
         ...product,
         priceWithIVA: (product.price * 1.21).toFixed(2),
 
@@ -15,30 +17,31 @@ export async function getAllProducts() {
             product.price - (product.price * product.discount) / 100
         ).toFixed(2),
 
-        stockStatus: product.stock > 10 ? 'Disponible' : product.stock > 0 ? 'Pocas unidades' : 'Sin stock'
-    }))
+        stockStatus:
+            product.stock > 10
+                ? 'Disponible'
+                : product.stock > 0
+                ? 'Pocas unidades'
+                : 'Sin stock'
+    }
+}
+
+export async function getAllProducts() {
+    const response = await fetchProducts()
+    const products = normalizeProducts(response)
+
+    return products.map(formatProduct)
 }
 
 export async function getProductById(id) {
     const product = await fetchProductById(id)
 
-    return {
-        ...product,
-
-        priceWithIVA: (product.price * 1.21).toFixed(2),
-
-        finalPrice: (
-            product.price - (product.price * product.discount) / 100
-        ).toFixed(2)
-    }
+    return formatProduct(product)
 }
 
 export async function getProductsByCategory(categoryId) {
-    const products = await fetchProductsByCategory(categoryId)
+    const response = await fetchProductsByCategory(categoryId)
+    const products = normalizeProducts(response)
 
-    return products.map(product => ({
-        ...product,
-
-        priceWithIVA: (product.price * 1.21).toFixed(2)
-    }))
+    return products.map(formatProduct)
 }
